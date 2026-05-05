@@ -1,14 +1,9 @@
-
+'use client'
 import Link from 'next/link'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { EmailSubscribe } from '@/components/EmailSubscribe'
 import { Music } from 'lucide-react'
-
-export const metadata = {
-  title: 'Guided Meditation for Life\'s Defining Moments | Techno Dojo Rituals',
-  description: 'Guided meditation for burnout, grief, life transitions, new beginnings, and high-stakes moments. Science-backed practices for when life hands you something significant. Free on Spotify and YouTube.',
-}
 
 export default function RitualsPage() {
   const faqItems = [
