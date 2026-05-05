@@ -1,0 +1,198 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Techno Dojo Color System */
+  --obsidian: #0C0C0A;
+  --bone: #F2EDE4;
+  --clay: #C4622D;
+  --gold: #B89050;
+  --forest: #2E3D28;
+  --stone: #6B6B62;
+  
+  /* Semantic tokens */
+  --background: var(--obsidian);
+  --foreground: var(--bone);
+  --card: var(--obsidian);
+  --card-foreground: var(--bone);
+  --popover: var(--obsidian);
+  --popover-foreground: var(--bone);
+  --primary: var(--clay);
+  --primary-foreground: var(--obsidian);
+  --secondary: var(--forest);
+  --secondary-foreground: var(--bone);
+  --muted: var(--stone);
+  --muted-foreground: var(--bone);
+  --accent: var(--gold);
+  --accent-foreground: var(--obsidian);
+  --destructive: #C4622D;
+  --destructive-foreground: var(--bone);
+  --border: var(--stone);
+  --input: var(--obsidian);
+  --ring: var(--gold);
+  --chart-1: var(--clay);
+  --chart-2: var(--gold);
+  --chart-3: var(--forest);
+  --chart-4: var(--stone);
+  --chart-5: var(--bone);
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: var(--obsidian);
+  --foreground: var(--bone);
+  --card: var(--obsidian);
+  --card-foreground: var(--bone);
+  --popover: var(--obsidian);
+  --popover-foreground: var(--bone);
+  --primary: var(--clay);
+  --primary-foreground: var(--obsidian);
+  --secondary: var(--forest);
+  --secondary-foreground: var(--bone);
+  --muted: var(--stone);
+  --muted-foreground: var(--bone);
+  --accent: var(--gold);
+  --accent-foreground: var(--obsidian);
+  --destructive: #C4622D;
+  --destructive-foreground: var(--bone);
+  --border: var(--stone);
+  --input: var(--obsidian);
+  --ring: var(--gold);
+  --chart-1: var(--clay);
+  --chart-2: var(--gold);
+  --chart-3: var(--forest);
+  --chart-4: var(--stone);
+  --chart-5: var(--bone);
+}
+
+@theme inline {
+  --font-bebas: var(--font-bebas);
+  --font-montserrat: var(--font-montserrat);
+  --font-dm-sans: var(--font-dm-sans);
+  --font-space-mono: var(--font-space-mono);
+  --font-playfair: var(--font-playfair);
+  --color-obsidian: var(--obsidian);
+  --color-bone: var(--bone);
+  --color-clay: var(--clay);
+  --color-gold: var(--gold);
+  --color-forest: var(--forest);
+  --color-stone: var(--stone);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius: var(--radius);
+}
+
+@layer base {
+  * {
+    @apply border-stone outline-gold/50;
+  }
+  body {
+    @apply bg-obsidian text-bone;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bebas;
+  }
+  
+  .font-bebas { font-family: var(--font-bebas); }
+  .font-montserrat { font-family: var(--font-montserrat); }
+  .font-dm-sans { font-family: var(--font-dm-sans); }
+  .font-space-mono { font-family: var(--font-space-mono); }
+  .font-playfair { font-family: var(--font-playfair); }
+}
+
+@layer components {
+  /* Smooth scroll and fade animations */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Button hover states */
+  .btn-primary {
+    @apply px-6 py-3 rounded bg-clay text-obsidian font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-bold tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+  
+  /* Divider */
+  .divider {
+    @apply h-px bg-stone/30 w-full;
+  }
+  
+  /* Wordmark */
+  .wordmark {
+    @apply flex flex-col items-start gap-0;
+  }
+  
+  .wordmark-techno {
+    @apply font-bebas text-bone tracking-widest;
+  }
+  
+  .wordmark-dojo {
+    @apply font-montserrat text-gold tracking-tight;
+  }
+  
+  .wordmark-rule {
+    @apply h-px bg-gold w-12;
+  }
+  
+  /* Card hover lift */
+  .card-lift {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+  }
+  
+  /* Text with lift on scroll */
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .scroll-fade.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
