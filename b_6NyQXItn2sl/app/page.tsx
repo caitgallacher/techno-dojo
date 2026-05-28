@@ -293,13 +293,14 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            {/* Left: Image Placeholder */}
-            <div className="aspect-square bg-stone/20 rounded-sm flex items-center justify-center">
-              <span className="font-space-mono text-stone text-xs tracking-widest uppercase">
-                Founder Photo
-              </span>
-            </div>
-
+            {/* Left: Founder Photo */}
+<div className="aspect-square rounded-sm overflow-hidden">
+  <img
+    src="/Cait.jpg"
+    alt="Cait Gallacher, founder of Techno Dojo, in Morocco at golden hour"
+    className="w-full h-full object-cover object-top"
+  />
+</div>
             {/* Right: Bio */}
             <div className="space-y-6">
               <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
