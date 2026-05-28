@@ -19,8 +19,7 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         email: email,
-        groups: []
-      })
+groups: ["188720136122795593"]      })
     })
 
     if (!response.ok) {
