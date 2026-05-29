@@ -153,8 +153,7 @@ export default function Home() {
       <p>
   <strong className="text-bone" style={{fontWeight: 500}}>You are still performing. But the version of you doing the performing feels thinner than it used to.</strong>
 </p>
-      <div className="pt-8 border-t border-stone/20">
-        <p className="text-bone">
+<div className="pt-8">        <p className="text-bone">
   <strong style={{fontWeight: 500}}>The practice does not ask you to slow down. It builds the foundation that makes going hard, for a long time, actually possible.</strong>
 </p>
       </div>
