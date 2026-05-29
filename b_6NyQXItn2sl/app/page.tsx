@@ -9,7 +9,7 @@ import { Play, Music } from 'lucide-react'
 
 export default function Home() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(['hero', 'philosophy', 'products', 'featured', 'science', 'about', 'listen', 'join'])
+    new Set(['hero', 'philosophy', 'why', 'products', 'featured', 'science', 'about', 'listen', 'join'])
   )
 
   useEffect(() => {
@@ -123,6 +123,44 @@ export default function Home() {
           <div className="h-px bg-stone/30 mt-8" />
         </div>
       </section>
+
+      {/* WHY YOU ARE HERE Section */}
+<section
+  id="why"
+  data-fade
+  className={`${fadeClass('why')} py-32 px-4 bg-obsidian transition-opacity duration-600`}
+>
+  <div className="max-w-3xl mx-auto">
+    <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-16">
+      WHY YOU ARE HERE
+    </p>
+    <div className="space-y-8 font-dm-sans font-light text-bone text-lg leading-relaxed">
+      <p>
+        You are already going. Hard. At some point, not dramatically, something shifted.
+      </p>
+      <p>
+        The sleep that used to restore you takes longer to work. The energy you used to count on arrives later, or not at all. You finish a run, a good week, a weekend away, and instead of feeling replenished, you feel almost. Almost yourself again, but not quite.
+      </p>
+      <p>
+        You are not burnt out. You would know.
+      </p>
+      <p>
+        But something is off and you cannot find it in any of the obvious places.
+      </p>
+      <p>
+        It shows in the small ways. A shorter fuse. Conversations with the people you love that are harder to be present for. The things that used to make you feel like yourself, quietly dropped because there was not enough left in the day to keep showing up for them.
+      </p>
+      <p>
+        You are still performing. But the version of you doing the performing feels thinner than it used to.
+      </p>
+      <div className="pt-8 border-t border-stone/20">
+        <p className="text-bone">
+          The practice does not ask you to slow down. It builds the foundation that makes going hard, for a long time, actually possible.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* PRODUCTS Section */}
       <section
