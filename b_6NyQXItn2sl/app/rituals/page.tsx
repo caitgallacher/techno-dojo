@@ -238,7 +238,6 @@ export default function RitualsPage() {
       </svg>
     </a>
   </div>
-</div>
 
             {/* GRIEF COMING SOON */}
             <div className="flex-1 border border-stone/30 rounded-sm p-6 bg-forest/50 opacity-50">
