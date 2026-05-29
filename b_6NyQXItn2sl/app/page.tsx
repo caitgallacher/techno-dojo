@@ -47,7 +47,7 @@ export default function Home() {
         <div className="space-y-8 max-w-3xl">
           {/* Label */}
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
-            Performance Meditation & Breathwork
+            NERVOUS SYSTEM TRAINING
           </p>
 
           {/* Main Headline */}
@@ -57,7 +57,7 @@ export default function Home() {
 
           {/* Subheading */}
           <p className="font-dm-sans text-stone text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
-            Guided meditation and breathwork for high performers. Science-backed. Built for the intersection of performance and human experience.
+            You were built for an intense life. This practice builds the nervous system that holds you together while you live it. Science-backed. Free on Spotify and YouTube.
           </p>
 
           {/* CTA Button */}
@@ -115,7 +115,7 @@ export default function Home() {
           {/* Pull Quote */}
           <div className="max-w-3xl mx-auto text-center space-y-6 my-8">
             <p className="font-playfair text-bone text-2xl sm:text-3xl italic leading-relaxed">
-              &quot;The intensity requires the stillness. The stillness is only as deep as the intensity that earned it.&quot;
+              &quot;The intensity requires the stillness. The stillness runs as deep as the intensity that needs it.&quot;
             </p>
           </div>
 
@@ -143,7 +143,7 @@ export default function Home() {
               <div className="card-lift border border-bone rounded-sm p-8 bg-obsidian hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
                 <h3 className="font-bebas text-bone text-2xl tracking-tight mb-4">SESSIONS</h3>
                 <p className="font-dm-sans text-stone text-sm leading-relaxed mb-6 font-light">
-                  Deep science-backed guided meditations. Each session trains a specific mental performance skill. No experience needed.
+                  Deep science-backed guided meditations. Each session builds a specific nervous system capacity. No prior experience needed.
                 </p>
                 <p className="font-space-mono text-clay text-xs tracking-widest uppercase">
                   20 to 30 min
@@ -310,7 +310,7 @@ export default function Home() {
                 CAIT GALLACHER
               </h2>
               <p className="font-dm-sans text-obsidian text-lg leading-relaxed font-light">
-                Former management consultant. MBA. National athlete, Team Canada All-Star Cheerleading. 200-hour yoga teacher training. 100-hour breathwork and meditation certification. Full-time traveller. Techno Dojo exists because high performance and inner work are not opposites. They are the same practice from different directions.
+                Former management consultant. MBA. National athlete, Team Canada All-Star Cheerleading. 200-hour yoga teacher training. 100-hour breathwork and meditation certification. Full-time traveller. Techno Dojo exists because she learned, through all of it, that the intensity and the stillness are not in opposition. One builds the capacity for the other.
               </p>
             </div>
           </div>
