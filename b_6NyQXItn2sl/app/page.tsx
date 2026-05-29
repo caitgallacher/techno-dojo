@@ -141,9 +141,9 @@ export default function Home() {
       <p>
         The sleep that used to restore you takes longer to work. The energy you used to count on arrives later, or not at all. You finish a run, a good week, a weekend away, and instead of feeling replenished, you feel almost. Almost yourself again, but not quite.
       </p>
-      <p>
-        You are not burnt out. You would know.
-      </p>
+     <p>
+  <strong className="text-bone font-normal" style={{fontWeight: 500}}>You are not burnt out. You would know.</strong>
+</p>
       <p>
         But something is off and you cannot find it in any of the obvious places.
       </p>
@@ -151,12 +151,12 @@ export default function Home() {
         It shows in the small ways. A shorter fuse. Conversations with the people you love that are harder to be present for. The things that used to make you feel like yourself, quietly dropped because there was not enough left in the day to keep showing up for them.
       </p>
       <p>
-        You are still performing. But the version of you doing the performing feels thinner than it used to.
-      </p>
+  <strong className="text-bone" style={{fontWeight: 500}}>You are still performing. But the version of you doing the performing feels thinner than it used to.</strong>
+</p>
       <div className="pt-8 border-t border-stone/20">
         <p className="text-bone">
-          The practice does not ask you to slow down. It builds the foundation that makes going hard, for a long time, actually possible.
-        </p>
+  <strong style={{fontWeight: 500}}>The practice does not ask you to slow down. It builds the foundation that makes going hard, for a long time, actually possible.</strong>
+</p>
       </div>
     </div>
   </div>
