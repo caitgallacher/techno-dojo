@@ -13,7 +13,7 @@ const config: Config = {
         clay: '#C4622D',
         gold: '#B89050',
         forest: '#2E3D28',
-        stone: '#6B6B62',
+        stone: '#9A9A92',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         card: 'var(--card)',
