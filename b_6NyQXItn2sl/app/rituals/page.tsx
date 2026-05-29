@@ -209,7 +209,7 @@ export default function RitualsPage() {
             {/* MOTHER'S DAY CARD */}
 <div className="flex-1 border border-stone/30 rounded-sm p-6 bg-forest/50">
   <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-2">
-    MOTHER&apos;S DAY
+   MOTHER&apos;S DAY
   </p>
   <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-4">
     20 MIN
@@ -238,7 +238,6 @@ export default function RitualsPage() {
       </svg>
     </a>
   </div>
-
             {/* GRIEF COMING SOON */}
             <div className="flex-1 border border-stone/30 rounded-sm p-6 bg-forest/50 opacity-50">
               <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
