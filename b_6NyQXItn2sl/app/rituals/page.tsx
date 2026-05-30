@@ -195,12 +195,12 @@ export default function RitualsPage() {
           </p>
           <p className="font-space-mono text-stone text-xs mb-8">
             <a
-              href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2023.1233101/full"
+              href="https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2024.1381373/full"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 hover:text-bone transition-colors"
             >
-              Frontiers in Public Health. Meditation and Burnout. 2024.
+              Shoker et al. Frontiers in Public Health. 2024.
             </a>
           </p>
 
