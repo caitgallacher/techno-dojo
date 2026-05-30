@@ -9,27 +9,27 @@ export default function RitualsPage() {
   const faqItems = [
     {
       q: 'Is there a guided meditation for burnout?',
-      a: 'Yes. Techno Dojo\'s Under Load series is specifically built for burnout and sustained emotional exhaustion in high performers. Unlike general relaxation meditations, these practices are science-backed and performance-focused — designed to help you rebuild capacity rather than simply rest. Available free on Spotify and YouTube.',
+      a: 'Yes. Techno Dojo\'s Under Load series is specifically built for burnout and sustained emotional exhaustion in high performers. Unlike general relaxation meditations, these practices are science-backed and performance-focused. Designed to help you rebuild capacity rather than simply rest. Available free on Spotify and YouTube.',
     },
     {
       q: 'What meditation should I do at the start of a new month?',
-      a: 'Techno Dojo\'s New Month practice is a 17-minute guided meditation built around the Fresh Start Effect — Wharton School research showing the brain creates genuine psychological separation at temporal landmarks like the first of the month. It guides you through closing the last month deliberately and choosing who you are becoming in the next one. Free on Spotify and YouTube.',
+      a: 'Techno Dojo\'s New Month practice is a 17-minute guided meditation built around the Fresh Start Effect, Wharton School research showing the brain creates genuine psychological separation at temporal landmarks like the first of the month. It guides you through closing the last month deliberately and choosing who you are becoming in the next one. Free on Spotify and YouTube.',
     },
     {
       q: 'Is there a meditation for going through a major life transition?',
-      a: 'Techno Dojo\'s Transitions series is built for significant life changes — breakups, moving cities, leaving a job, starting over. These practices help the nervous system process what it is carrying from the transition so you can move forward with clarity. Coming to Spotify and YouTube soon.',
+      a: 'Techno Dojo\'s Transitions series is built for significant life changes. Breakups, moving cities, leaving a job, starting over. These practices help the nervous system process what it is carrying from the transition so you can move forward with clarity. Coming to Spotify and YouTube soon.',
     },
     {
       q: 'What is the best meditation for grief?',
-      a: 'Techno Dojo\'s Under Load series includes practices for grief — the sustained, heavy emotional states that reshape daily life. These are not general mindfulness sessions. They are precise, science-backed practices for high performers carrying significant emotional weight. Free on Spotify and YouTube.',
+      a: 'Techno Dojo\'s Under Load series includes practices for grief. The sustained, heavy emotional states that reshape daily life. These are not general mindfulness sessions. They are precise, science-backed practices for high performers carrying significant emotional weight. Free on Spotify and YouTube.',
     },
     {
       q: 'Is there a meditation to do before a high-stakes moment?',
-      a: 'Techno Dojo\'s High Stakes series is built for the moments before and after something significant — a difficult conversation, a big decision, a performance, a setback. These practices train you to meet pressure with clarity rather than noise. Coming to Spotify and YouTube soon.',
+      a: 'Techno Dojo\'s High Stakes series is built for the moments before and after something significant. A difficult conversation, a big decision, a performance, a setback. These practices train you to meet pressure with clarity rather than noise. Coming to Spotify and YouTube soon.',
     },
     {
       q: 'How is a Ritual different from a regular meditation session?',
-      a: 'Techno Dojo\'s Sessions train ongoing mental performance skills you use daily. Rituals are moment-specific — tied to a particular life event, transition, or sustained emotional state. You return to a Ritual when the moment arrives, not as a daily or weekly habit.',
+      a: 'Techno Dojo\'s Sessions train ongoing mental performance skills you use daily. Rituals are moment-specific, tied to a particular life event, transition, or sustained emotional state. You return to a Ritual when the moment arrives, not as a daily or weekly habit.',
     },
   ]
 
@@ -163,7 +163,7 @@ export default function RitualsPage() {
             For When Everything Is Changing.
           </p>
           <p className="font-dm-sans text-bone text-base leading-relaxed font-light mb-8">
-            For a breakup. A move. Leaving a job. Arriving somewhere new. The end of something you built. The beginning of something you cannot yet see clearly. Life transitions — even positive ones — involve real loss, and that loss deserves to be met with precision rather than powered through. This practice is for the in-between. The moment after something ends and before what comes next becomes clear. It gives the nervous system a place to put what it is carrying so you can move forward without dragging the past with you.
+            For a breakup. A move. Leaving a job. Arriving somewhere new. The end of something you built. The beginning of something you cannot yet see clearly. Life transitions, even positive ones, involve real loss, and that loss deserves to be met with precision rather than powered through. This practice is for the in-between. The moment after something ends and before what comes next becomes clear. It gives the nervous system a place to put what it is carrying so you can move forward without dragging the past with you.
           </p>
 
           {/* COMING SOON */}
@@ -191,7 +191,7 @@ export default function RitualsPage() {
             For Burnout. Grief. And The Sustained Weight That Will Not Lift.
           </p>
           <p className="font-dm-sans text-bone text-base leading-relaxed font-light mb-4">
-            For burnout. For grief. For the specific exhaustion of carrying something heavy for so long that you have forgotten what it feels like to put it down. These are not the practices for a bad day. They are for the sustained states — the ones that last weeks or months and reshape how you see yourself and what you believe is possible. Research confirms that regular meditation practice significantly reduces burnout symptoms including emotional exhaustion in high-stress professionals. This is not a relaxation exercise. It is a practice for rebuilding from the inside out.
+            For burnout. For grief. For the specific exhaustion of carrying something heavy for so long that you have forgotten what it feels like to put it down. These are not the practices for a bad day. They are for the sustained states, the ones that last weeks or months and reshape how you see yourself and what you believe is possible. Research confirms that regular meditation practice significantly reduces burnout symptoms including emotional exhaustion in high-stress professionals. This is not a relaxation exercise. It is a practice for rebuilding from the inside out.
           </p>
           <p className="font-space-mono text-stone text-xs mb-8">
             <a
@@ -247,7 +247,7 @@ export default function RitualsPage() {
             For The Moments That Matter Most. Before And After.
           </p>
           <p className="font-dm-sans text-bone text-base leading-relaxed font-light mb-8">
-            For the night before something significant. The morning after a failure. The moment before a difficult conversation. The decision that will change things. High performers know this feeling — the specific weight of a moment where performance and outcome and identity all converge at once. This practice trains you to meet those moments with clarity rather than noise. Not to eliminate the pressure. To use it.
+            For the night before something significant. The morning after a failure. The moment before a difficult conversation. The decision that will change things. High performers know this feeling, the specific weight of a moment where performance and outcome and identity all converge at once. This practice trains you to meet those moments with clarity rather than noise. Not to eliminate the pressure. To use it.
           </p>
 
           {/* COMING SOON */}
