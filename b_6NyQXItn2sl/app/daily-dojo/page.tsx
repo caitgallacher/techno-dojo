@@ -18,7 +18,7 @@ export default function DailyDojoPage() {
     },
     {
       day: 'TUESDAY',
-      title: 'CONFIDENCE',
+      title: 'CONTINUATION',
       duration: '8 MIN',
       description: 'Shift from anxious arousal to confident readiness. Rewire the nervous system response to challenge.',
       spotifyLink: 'https://open.spotify.com/episode/5sTEMohMPhhJ6CZDkxcccs',
@@ -26,7 +26,7 @@ export default function DailyDojoPage() {
     },
     {
       day: 'WEDNESDAY',
-      title: 'PRESENCE',
+      title: 'CLARITY',
       duration: '6 MIN',
       description: 'Return to now. The foundational skill. Everything else builds on this.',
       spotifyLink: 'https://open.spotify.com/episode/1CByE91uQXnN2davCHbgyR',
@@ -34,7 +34,7 @@ export default function DailyDojoPage() {
     },
     {
       day: 'THURSDAY',
-      title: 'COMPOSURE',
+      title: 'STEADINESS',
       duration: '7 MIN',
       description: 'Access the gap between stimulus and response. Stay steady under pressure.',
       spotifyLink: 'https://open.spotify.com/episode/30DSYaTN9MfZBduyG6VrCl',
@@ -42,7 +42,7 @@ export default function DailyDojoPage() {
     },
     {
       day: 'FRIDAY',
-      title: 'RESET',
+      title: 'COMPLETION',
       duration: '10 MIN',
       description: 'Clear the cognitive load of the week. Release and recover before the weekend.',
       spotifyLink: 'https://open.spotify.com/episode/4t5wqcSetRwcJukKT6toiG',
