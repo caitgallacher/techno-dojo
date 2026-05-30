@@ -96,7 +96,7 @@ export default function RitualsPage() {
             For New Beginnings. Fresh Starts. The Moments That Mark Time.
           </p>
           <p className="font-dm-sans text-bone text-base leading-relaxed font-light mb-4">
-            For the start of a new month. A new year. A birthday. The moments the calendar marks that your brain is already using to separate who you have been from who you are becoming. Research from the Wharton School identifies these temporal landmarks as genuine psychological reset points — moments where the brain creates real separation from your past self. Most high performers feel this shift at the start of a new month or new year. Very few use it deliberately. This is the practice that changes that.
+            For the start of a new month. A new year. A birthday. The moments the calendar marks that your brain is already using to separate who you have been from who you are becoming. Research from the Wharton School identifies these temporal landmarks as genuine psychological reset points, moments where the brain creates real separation from your past self. Most high performers feel this shift at the start of a new month or new year. Very few use it deliberately. This is the practice that changes that.
           </p>
           <p className="font-space-mono text-stone text-xs mb-8">
             <a
