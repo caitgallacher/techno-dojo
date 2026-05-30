@@ -40,7 +40,7 @@ export default function RitualsPage() {
       {/* HERO */}
       <section className="h-screen pt-40 flex flex-col items-center justify-center px-4 text-center">
         <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-4">
-          Moment-Specific Practice
+          YOUR DOJO
         </p>
         <h1 className="font-bebas text-bone text-6xl sm:text-7xl tracking-tight mb-6 text-balance">
           RITUALS
