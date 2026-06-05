@@ -42,7 +42,8 @@ export default function RootLayout({
             --font-space-mono: ${spaceMono.style.fontFamily};
             --font-playfair: ${playfairDisplay.style.fontFamily};
           }
-        `}</style>
+`}</style>
+      <meta name="google-site-verification" content="c_6CkV5Z-7g7Dx-EeMmJGHSYi-eWSZ5k6vvano9L2kY" />
       </head>
       <body className="font-dm-sans antialiased bg-obsidian text-bone">
         {children}
