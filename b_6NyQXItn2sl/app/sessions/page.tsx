@@ -10,23 +10,23 @@ export default function SessionsPage() {
   const faqItems = [
     {
       q: 'Do I need experience to start?',
-      a: 'No. Every session is designed for someone sitting down for the first time. Start with Session 01.',
+      a: 'No. Every session works for someone sitting down for the first time. Explore Sessions for an introduction to meditation, Daily Dojo for short daily practices, and Rituals for moment-specific practices.',
     },
     {
       q: 'How long are the sessions?',
       a: 'Sessions run between 20 and 30 minutes. Long enough to go somewhere real. Short enough to do before work.',
     },
     {
-      q: 'Is this meditation or something else?',
-      a: 'It is guided meditation, science-backed and performance-focused. No spirituality required. No prior experience needed. Just a quiet place and a pair of headphones.',
+      q: 'Is this meditation?',
+      a: 'It is guided meditation, science-backed and built to train the nervous system. No spirituality. No prior experience needed. Just a quiet place and a pair of headphones.',
     },
     {
       q: 'Why no music?',
-      a: 'Music underneath a guided voice competes with it. The voice is the anchor. Silence is what makes it work.',
+      a: 'Music during a meditation can pull your attention, become a distraction, create conditional reliance, or interfere with your natural thoughts. The voice is your anchor and the silence is what enables you to explore your own mind.',
     },
     {
       q: 'How often should I listen?',
-      a: 'Research shows frequency matters more than duration. Showing up consistently, even briefly, produces stronger results than occasional longer sessions.',
+      a: 'Frequency matters more than duration. Showing up consistently, even briefly, produces stronger results than occasional longer sessions.',
     },
   ]
 
@@ -43,7 +43,7 @@ export default function SessionsPage() {
           SESSIONS
         </h1>
         <p className="font-dm-sans text-stone text-lg leading-relaxed max-w-2xl font-light mb-8">
-          Each session trains a specific mental performance skill. Science-backed. No experience needed. Start anywhere.
+          Each session builds a specific nervous system capacity. Science-backed. No experience needed. Start anywhere.
         </p>
         <div className="h-px bg-clay w-12" />
       </section>
@@ -77,7 +77,7 @@ export default function SessionsPage() {
               The Result
             </p>
             <p className="font-dm-sans text-stone text-sm leading-relaxed font-light">
-              Not relaxation. Structural change. Eight weeks of practice produces measurable differences in the brain.
+              Not relaxation. A trained nervous system. Eight weeks of practice produces measurable differences in the brain.
             </p>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function SessionsPage() {
             {/* Right: Description and CTAs */}
             <div className="flex-grow lg:w-2/3">
               <p className="font-dm-sans text-bone text-base leading-relaxed font-light mb-6">
-                Most people spend 47% of their waking hours somewhere other than the present moment. Not thinking about what is in front of them, replaying what happened or rehearsing what might. This session trains the return. The ability to notice you have drifted and come back. Not once. As a practice.
+                Most people spend 47% of their waking hours somewhere other than the present moment. Not thinking about what is in front of them, replaying what happened or rehearsing what might. This session trains the return. The ability to notice you have drifted and come back. Not once. Every time.
               </p>
               <p className="font-space-mono text-stone text-xs italic mb-6">
                 <a

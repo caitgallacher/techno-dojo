@@ -12,7 +12,7 @@ export default function DailyDojoPage() {
       day: 'MONDAY',
       title: 'FOCUS',
       duration: '7 MIN',
-      description: 'The week starts and the field of attention is already fragmented. This session trains the ability to gather it deliberately and bring it to a single point before the day pulls it in every direction.',
+      description: 'You have a 90-minute window of peak performance after waking up. Use it before the week fragments your attention.',
       spotifyLink: 'https://open.spotify.com/episode/2T1OlXpNcMyRGYikT9tRgN',
       youtubeLink: 'https://youtu.be/0ZwVLE4nZXQ',
     },
@@ -20,7 +20,7 @@ export default function DailyDojoPage() {
       day: 'TUESDAY',
       title: 'CONTINUATION',
       duration: '8 MIN',
-      description: 'The novelty has worn off. The momentum has settled. This session trains the decision to continue, not from obligation, but from a conscious choice about identity. The people who make it past the first week are not more disciplined. They made a different decision about who they are.',
+      description: 'Identity-based commitment outperforms motivation every time. Train the decision about who you are in relation to the things you do.',
       spotifyLink: 'https://open.spotify.com/episode/5sTEMohMPhhJ6CZDkxcccs',
       youtubeLink: 'https://youtu.be/ZM3mf_5H1kU',
     },
@@ -28,7 +28,7 @@ export default function DailyDojoPage() {
       day: 'WEDNESDAY',
       title: 'CLARITY',
       duration: '6 MIN',
-      description: 'By mid-week the signal is buried under accumulated inputs. This session trains intentional filtering. Choosing what deserves the lens and choosing what does not. Not depletion management. A skill.',
+      description: 'Decision fatigue is measurable. By midweek, your prefrontal cortex is flooded with competing inputs. Get clear on your priorities now to close the week strong.',
       spotifyLink: 'https://open.spotify.com/episode/1CByE91uQXnN2davCHbgyR',
       youtubeLink: 'https://youtu.be/sqn2t6ghoII',
     },
@@ -36,7 +36,7 @@ export default function DailyDojoPage() {
       day: 'THURSDAY',
       title: 'STEADINESS',
       duration: '7 MIN',
-      description: 'Four days in, the weight has not changed. It is just easier to let the form slip. This session trains the ability to hold standard under fatigue. Not more energy. Holding what was built when it was easier to hold.',
+      description: 'Emotional regulation is the first to degrade when you\'re tired. Hold yourself to your own high standards through the fatigue.',
       spotifyLink: 'https://open.spotify.com/episode/30DSYaTN9MfZBduyG6VrCl',
       youtubeLink: 'https://youtu.be/M26T6qL1xXs',
     },
@@ -44,7 +44,7 @@ export default function DailyDojoPage() {
       day: 'FRIDAY',
       title: 'COMPLETION',
       duration: '10 MIN',
-      description: 'Most people stop working on Friday. Very few actually finish. The Zeigarnik effect means an unclosed week travels into the weekend and returns on Monday already accumulated. This session trains completion. A deliberate full stop.',
+      description: 'The Zeigarnik effect means an unfinished week travels into your weekend. Train the full stop. Close the week, all the way. Use the weekend to reset.',
       spotifyLink: 'https://open.spotify.com/episode/4t5wqcSetRwcJukKT6toiG',
       youtubeLink: 'https://youtu.be/a4ZigEn8BW0',
     },
@@ -53,19 +53,19 @@ export default function DailyDojoPage() {
   const faqItems = [
     {
       q: 'What is the Daily Dojo?',
-      a: 'The Daily Dojo is a growing suite of short guided practices built for specific moments in your day. Each series targets a different time and a different performance challenge. The Morning Dojo is the first series available now.',
+      a: 'The Daily Dojo is a growing collection of short guided practices built for specific moments in your day. Each series targets a different time and a different capacity, targeting specific challenges many people face on that day of the week. The Morning Dojo is the first series available now.',
     },
     {
       q: 'When should I listen?',
       a: 'That depends on the series. The Morning Dojo is designed for first thing in the morning. Evening and bedtime series are coming. Each practice is built for the moment it serves.',
     },
     {
-      q: 'Do I need to follow a specific series?',
-      a: 'Each session stands alone. You can start anywhere. But each series is designed as a complete arc, and doing it in full is where the real training happens.',
+      q: 'Do I need to follow the series in order?',
+      a: 'Each practice stands alone. You can start anywhere on any day of the week.',
     },
     {
       q: 'How is this different from the Sessions?',
-      a: 'Sessions go deep on a single concept, 20 to 30 minutes. The Daily Dojo is your regular training practice, short and targeted to a specific moment in your day.',
+      a: 'Sessions go deep on one concept, 20 to 30 minutes. The Daily Dojo is a daily training practice; shorter and targeted to specific challenges people face throughout the week.',
     },
     {
       q: 'Is it free?',
@@ -86,7 +86,7 @@ export default function DailyDojoPage() {
           DAILY DOJO
         </h1>
         <p className="font-dm-sans text-stone text-lg leading-relaxed max-w-2xl font-light mb-8">
-          Training practices for every part of your day. A different practice for every moment that matters. Short enough to do consistently. Specific enough to actually move something.
+          Training practices for every part of your day. Different practices for different day-to-day moments. Short enough to do consistently and precise enough to build real results.
         </p>
         <div className="h-px bg-clay w-12" />
       </section>
@@ -101,7 +101,7 @@ export default function DailyDojoPage() {
                 THE PRACTICE
               </p>
               <p className="font-dm-sans text-stone text-sm leading-relaxed font-light">
-                A structured training sequence. Each moment targets a specific mental performance skill. Together they build a comprehensive system.
+                A structured training sequence. Each practice targets a specific nervous system capacity. Together they build a comprehensive system.
               </p>
             </div>
             {/* Column 2 */}
@@ -136,7 +136,7 @@ export default function DailyDojoPage() {
             MORNING DOJO
           </h2>
           <p className="font-dm-sans text-bone text-base leading-relaxed font-light mb-6">
-            The first Daily Dojo series. Five days, five performance challenges, five to ten minutes each morning before the day makes its demands.
+            The first Daily Dojo series. Five days, five skills. Five to ten minutes each morning before your day starts.
           </p>
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
             SERIES 01 OF THE DAILY DOJO

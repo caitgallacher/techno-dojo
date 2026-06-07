@@ -57,7 +57,7 @@ export default function Home() {
 
           {/* Subheading */}
           <p className="font-dm-sans text-stone text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
-            You were built for an intense life. This practice builds the nervous system that holds you together while you live it. Science-backed. Free on Spotify and YouTube.
+            You were built for an intense life. This practice builds the nervous system that supports you while you live it. Science-backed. Free on Spotify and YouTube.
           </p>
 
           {/* CTA Button */}
@@ -125,40 +125,37 @@ export default function Home() {
       </section>
 
       {/* WHY YOU ARE HERE Section */}
-<section
-  id="why"
-  data-fade
-  className={`${fadeClass('why')} py-32 px-4 bg-obsidian transition-opacity duration-600`}
->
-  <div className="max-w-3xl mx-auto">
-    <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-16">
-      WHY YOU ARE HERE
-    </p>
-    <div className="space-y-8 font-dm-sans font-light text-bone text-lg leading-relaxed">
-      <p>
-        You are already going. Hard. At some point, not dramatically, something shifted.
-      </p>
-      <p>
-        The sleep that used to restore you takes longer to work. The energy you used to count on arrives later, or not at all. You finish a run, a good week, a weekend away, and instead of feeling replenished, you feel almost. Almost yourself again, but not quite.
-      </p>
-     <p>
-  <strong className="text-bone font-normal" style={{fontWeight: 500}}>You are not burnt out. You would know.</strong>
-</p>
-      <p>
-        But something is off and you cannot find it in any of the obvious places.
-      </p>
-      <p>
-        It shows in the small ways. A shorter fuse. Conversations with the people you love that are harder to be present for. The things that used to make you feel like yourself, quietly dropped because there was not enough left in the day to keep showing up for them.
-      </p>
-      <p>
-  <strong className="text-bone" style={{fontWeight: 500}}>You are still performing. But the version of you doing the performing feels thinner than it used to.</strong>
-</p>
-<p className="text-bone">
-  <strong style={{fontWeight: 500}}>The practice does not ask you to slow down. It builds the foundation that makes going hard, for a long time, actually possible.</strong>
-</p>
-    </div>
-  </div>
-</section>
+      <section
+        id="why"
+        data-fade
+        className={`${fadeClass('why')} py-32 px-4 bg-obsidian transition-opacity duration-600`}
+      >
+        <div className="max-w-3xl mx-auto">
+          <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-16">
+            WHY YOU ARE HERE
+          </p>
+          <div className="space-y-8 font-dm-sans font-light text-bone text-lg leading-relaxed">
+            <p>
+              You go hard. Your life is full and intense, and you want to keep it that way. But something is changing.
+            </p>
+            <p>
+              Sleep doesn&apos;t restore you the way it once did. Your energy takes longer to find you in the morning. The things you love: finishing a good run, seeing friends, a weekend away, don&apos;t leave you quite as replenished as they used to. You feel &quot;almost&quot;, like you&apos;re almost yourself, but not quite.
+            </p>
+            <p>
+              <strong className="text-bone font-normal" style={{fontWeight: 500}}>You&apos;re not burnt out. You want to keep going, you know that.</strong>
+            </p>
+            <p>
+              But something is off. It shows up in small ways. You have a slightly shorter temper. You aren&apos;t quite as present in conversations; half-listening, half mind-racing. You don&apos;t do as many of the things you used to love, the things that once defined you. There simply isn&apos;t enough space.
+            </p>
+            <p>
+              <strong className="text-bone" style={{fontWeight: 500}}>You&apos;re still living your life, exceeding your own expectations and pursuing your excellence. But the version of you doing the living feels a little less alive than it used to.</strong>
+            </p>
+            <p className="text-bone">
+              <strong style={{fontWeight: 500}}>This practice doesn&apos;t ask you to slow down. It builds the foundation that makes going hard while feeling alive, for a long time, actually possible.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* PRODUCTS Section */}
       <section
@@ -179,7 +176,7 @@ export default function Home() {
               <div className="card-lift border border-bone rounded-sm p-8 bg-obsidian hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
                 <h3 className="font-bebas text-bone text-2xl tracking-tight mb-4">SESSIONS</h3>
                 <p className="font-dm-sans text-stone text-sm leading-relaxed mb-6 font-light">
-                  Deep science-backed guided meditations. Each session builds a specific nervous system capacity. No prior experience needed.
+                  Science-backed guided meditations. Each session builds a specific nervous system capacity. No prior experience needed.
                 </p>
                 <p className="font-space-mono text-clay text-xs tracking-widest uppercase">
                   20 to 30 min
@@ -192,7 +189,7 @@ export default function Home() {
               <div className="card-lift border border-bone rounded-sm p-8 bg-obsidian hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
                 <h3 className="font-bebas text-bone text-2xl tracking-tight mb-4">DAILY DOJO</h3>
                 <p className="font-dm-sans text-stone text-sm leading-relaxed mb-6 font-light">
-                  A growing suite of daily training practices for every part of your day. Starting with Morning Dojo, Monday through Friday, five to ten minutes each morning.
+                  A growing collection of training practices for every part of your day. Starting with Morning Dojo, Monday through Friday, five to ten minutes each morning.
                 </p>
                 <p className="font-space-mono text-clay text-xs tracking-widest uppercase">
                   Daily Practice
@@ -205,7 +202,7 @@ export default function Home() {
               <div className="card-lift border border-bone rounded-sm p-8 bg-obsidian hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
                 <h3 className="font-bebas text-bone text-2xl tracking-tight mb-4">RITUALS</h3>
                 <p className="font-dm-sans text-stone text-sm leading-relaxed mb-6 font-light">
-                  Practices tied to specific moments in time. Not scheduled. Anchored. Return to it when the moment arrives.
+                  Practices tied to specific moments in time. Anchored in milestones. Return to them when the time is right.
                 </p>
                 <p className="font-space-mono text-clay text-xs tracking-widest uppercase">
                   Moment-Specific
@@ -217,7 +214,7 @@ export default function Home() {
             <div className="border border-stone/20 rounded-sm p-8 bg-obsidian/50 opacity-60 cursor-not-allowed h-full">
               <h3 className="font-bebas text-stone text-2xl tracking-tight mb-4">30-DAY BREATHWORK</h3>
               <p className="font-dm-sans text-stone/70 text-sm leading-relaxed mb-6 font-light">
-                A structured 30-day protocol. Daily breathwork that builds capacity and trains the nervous system from the inside out.
+                A structured 30-day protocol that builds your nervous system&apos;s capacity to match the life you&apos;re living.
               </p>
               <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
                 Coming Soon
@@ -330,13 +327,13 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             {/* Left: Founder Photo */}
-<div className="aspect-square rounded-sm overflow-hidden">
-  <img
-    src="/Cait.jpg"
-    alt="Cait Gallacher, founder of Techno Dojo, in Morocco at golden hour"
-    className="w-full h-full object-cover object-top"
-  />
-</div>
+            <div className="aspect-square rounded-sm overflow-hidden">
+              <img
+                src="/Cait.jpg"
+                alt="Cait Gallacher, founder of Techno Dojo, in Morocco at golden hour"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
             {/* Right: Bio */}
             <div className="space-y-6">
               <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
