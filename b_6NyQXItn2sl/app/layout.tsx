@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Bebas_Neue, Montserrat, DM_Sans, Space_Mono, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 import './globals.css'
 
 const bebasNeue = Bebas_Neue({ weight: '400', subsets: ['latin'] })
@@ -12,7 +13,7 @@ const playfairDisplay = Playfair_Display({ weight: '400', style: 'italic', subse
 export const metadata: Metadata = {
   title: 'Techno Dojo | Nervous System Training for People Who Live at Full Intensity',
   description: 'Nervous system training for people who live at full intensity. Science-backed. Free on Spotify and YouTube.',
-icons: {
+  icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
@@ -43,11 +44,23 @@ export default function RootLayout({
             --font-playfair: ${playfairDisplay.style.fontFamily};
           }
 `}</style>
-      <meta name="google-site-verification" content="c_6CkV5Z-7g7Dx-EeMmJGHSYi-eWSZ5k6vvano9L2kY" />
+        <meta name="google-site-verification" content="c_6CkV5Z-7g7Dx-EeMmJGHSYi-eWSZ5k6vvano9L2kY" />
       </head>
       <body className="font-dm-sans antialiased bg-obsidian text-bone">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1NLHMG47PP"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1NLHMG47PP');
+          `}
+        </Script>
       </body>
     </html>
   )
