@@ -69,8 +69,7 @@ export function Footer() {
           {/* Right: Tagline */}
           <div className="flex justify-end items-start text-right">
             <p className="font-space-mono text-stone text-xs tracking-widest">
-              Train relentlessly.<br />Live effortlessly.
-            </p>
+Go hard.<br />Stay whole.            </p>
           </div>
         </div>
 

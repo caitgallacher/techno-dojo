@@ -52,8 +52,7 @@ export default function Home() {
 
           {/* Main Headline */}
           <h1 className="font-bebas text-bone text-5xl sm:text-6xl lg:text-7xl leading-tight tracking-tight text-balance">
-            Train Relentlessly.<br />Live Effortlessly.
-          </h1>
+Go hard.<br />Stay whole.          </h1>
 
           {/* Subheading */}
           <p className="font-dm-sans text-stone text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
