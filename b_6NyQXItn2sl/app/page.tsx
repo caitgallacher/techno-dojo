@@ -9,7 +9,7 @@ import { Play, Music } from 'lucide-react'
 
 export default function Home() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(['hero', 'philosophy', 'why', 'products', 'featured', 'science', 'about', 'listen', 'join'])
+    new Set(['hero', 'philosophy', 'why', 'products', 'science', 'about', 'listen', 'join'])
   )
 
   useEffect(() => {
@@ -45,21 +45,15 @@ export default function Home() {
         className={`${fadeClass('hero')} min-h-screen pt-40 flex flex-col items-center justify-center px-4 text-center transition-opacity duration-600`}
       >
         <div className="space-y-8 max-w-3xl">
-          {/* Label */}
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
             NERVOUS SYSTEM TRAINING
           </p>
-
-          {/* Main Headline */}
           <h1 className="font-bebas text-bone text-5xl sm:text-6xl lg:text-7xl leading-tight tracking-tight text-balance">
-Go hard.<br />Stay whole.          </h1>
-
-          {/* Subheading */}
+            Go hard.<br />Stay whole.
+          </h1>
           <p className="font-dm-sans text-stone text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
             You were built for an intense life. This practice builds the nervous system that supports you while you live it. Science-backed. Free on Spotify and YouTube.
           </p>
-
-          {/* CTA Button */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <a
               href="https://open.spotify.com/show/4Cz6WuByhIpTo1oeaGkIAm?si=a0b1bebb7f854974"
@@ -71,8 +65,6 @@ Go hard.<br />Stay whole.          </h1>
               Start Listening. It&apos;s Free
             </a>
           </div>
-
-          {/* Availability */}
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase pt-4">
             Available on Spotify and YouTube
           </p>
@@ -87,7 +79,6 @@ Go hard.<br />Stay whole.          </h1>
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
-            {/* Left: TECHNO */}
             <div className="space-y-4">
               <h2 className="font-bebas text-clay text-5xl sm:text-6xl tracking-tight text-balance">
                 TECHNO
@@ -96,8 +87,6 @@ Go hard.<br />Stay whole.          </h1>
                 The relentless pursuit of excellence in any field.
               </p>
             </div>
-
-            {/* Right: DOJO */}
             <div className="space-y-4">
               <h2 className="font-montserrat text-gold text-5xl sm:text-6xl tracking-tight text-balance">
                 DOJO
@@ -107,18 +96,12 @@ Go hard.<br />Stay whole.          </h1>
               </p>
             </div>
           </div>
-
-          {/* Divider */}
           <div className="h-px bg-stone/30 my-12" />
-
-          {/* Pull Quote */}
           <div className="max-w-3xl mx-auto text-center space-y-6 my-8">
             <p className="font-playfair text-bone text-2xl sm:text-3xl italic leading-relaxed">
               &quot;The intensity requires the stillness. The stillness runs as deep as the intensity that needs it.&quot;
             </p>
           </div>
-
-          {/* Divider */}
           <div className="h-px bg-stone/30 mt-8" />
         </div>
       </section>
@@ -133,26 +116,51 @@ Go hard.<br />Stay whole.          </h1>
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-16">
             WHY YOU ARE HERE
           </p>
-          <div className="space-y-8 font-dm-sans font-light text-bone text-lg leading-relaxed">
-            <p>
-              You go hard. Your life is full and intense, and you want to keep it that way. But something is changing.
-            </p>
-            <p>
-              Sleep doesn&apos;t restore you the way it once did. Your energy takes longer to find you in the morning. The things you love: finishing a good run, seeing friends, a weekend away, don&apos;t leave you quite as replenished as they used to. You feel &quot;almost&quot;, like you&apos;re almost yourself, but not quite.
-            </p>
-            <p>
-              <strong className="text-bone font-normal" style={{fontWeight: 500}}>You&apos;re not burnt out. You want to keep going, you know that.</strong>
-            </p>
-            <p>
-              But something is off. It shows up in small ways. You have a slightly shorter temper. You aren&apos;t quite as present in conversations; half-listening, half mind-racing. You don&apos;t do as many of the things you used to love, the things that once defined you. There simply isn&apos;t enough space.
-            </p>
-            <p>
-              <strong className="text-bone" style={{fontWeight: 500}}>You&apos;re still living your life, exceeding your own expectations and pursuing your excellence. But the version of you doing the living feels a little less alive than it used to.</strong>
-            </p>
-            <p className="text-bone">
-              <strong style={{fontWeight: 500}}>This practice doesn&apos;t ask you to slow down. It builds the foundation that makes going hard while feeling alive, for a long time, actually possible.</strong>
+
+          {/* Line 1 */}
+          <div className="mb-12">
+            <h2 className="font-bebas text-bone text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
+              YOU GO HARD.
+            </h2>
+            <p className="font-dm-sans font-light text-stone text-lg leading-relaxed">
+              Your life is full and intense, and you want to keep it that way. But something is changing. Sleep doesn&apos;t feel as restorative. Energy is slower to arrive. The things you love aren&apos;t as fulfilling. You feel &ldquo;almost&rdquo; yourself, but not quite.
             </p>
           </div>
+
+          {/* Divider */}
+          <div className="h-px bg-stone/20 mb-12" />
+
+          {/* Line 2 */}
+          <div className="mb-12">
+            <h2 className="font-bebas text-bone text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
+              YOU WANT TO KEEP GOING, BUT SOMETHING IS OFF.
+            </h2>
+            <p className="font-dm-sans font-light text-stone text-lg leading-relaxed">
+              It shows up in small ways. Slightly shorter temper. Harder to be present. Half-listening, half mind-racing. Less time for the things that once defined you. There simply isn&apos;t enough space.
+            </p>
+          </div>
+
+          {/* Divider */}
+          <div className="h-px bg-stone/20 mb-12" />
+
+          {/* Line 3 */}
+          <div className="mb-12">
+            <h2 className="font-bebas text-bone text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
+              THE VERSION OF YOU DOING THE LIVING FEELS LESS ALIVE.
+            </h2>
+            <p className="font-dm-sans font-light text-stone text-lg leading-relaxed">
+              You&apos;re still living at full intensity. But you need a foundation that makes it sustainable. Long-term.
+            </p>
+          </div>
+
+          {/* Divider */}
+          <div className="h-px bg-stone/20 mb-12" />
+
+          {/* Line 4 — Playfair italic conclusion */}
+          <p className="font-playfair text-bone text-2xl sm:text-3xl italic leading-relaxed">
+            This is your practice. It doesn&apos;t ask you to slow down. It builds the nervous system that makes life at full intensity possible.
+          </p>
+
         </div>
       </section>
 
@@ -163,14 +171,10 @@ Go hard.<br />Stay whole.          </h1>
         className={`${fadeClass('products')} py-32 px-4 bg-obsidian transition-opacity duration-600`}
       >
         <div className="max-w-7xl mx-auto">
-          {/* Section Label */}
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase text-center mb-16">
             What We Build
           </p>
-
-          {/* Product Grid - 3 top, 2 bottom */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1: SESSIONS */}
             <Link href="/sessions">
               <div className="card-lift border border-bone rounded-sm p-8 bg-obsidian hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
                 <h3 className="font-bebas text-bone text-2xl tracking-tight mb-4">SESSIONS</h3>
@@ -182,8 +186,6 @@ Go hard.<br />Stay whole.          </h1>
                 </p>
               </div>
             </Link>
-
-            {/* Card 2: DAILY DOJO */}
             <Link href="/daily-dojo">
               <div className="card-lift border border-bone rounded-sm p-8 bg-obsidian hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
                 <h3 className="font-bebas text-bone text-2xl tracking-tight mb-4">DAILY DOJO</h3>
@@ -195,8 +197,6 @@ Go hard.<br />Stay whole.          </h1>
                 </p>
               </div>
             </Link>
-
-            {/* Card 3: RITUALS */}
             <Link href="/rituals">
               <div className="card-lift border border-bone rounded-sm p-8 bg-obsidian hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
                 <h3 className="font-bebas text-bone text-2xl tracking-tight mb-4">RITUALS</h3>
@@ -208,8 +208,6 @@ Go hard.<br />Stay whole.          </h1>
                 </p>
               </div>
             </Link>
-
-            {/* Card 4: 30-DAY BREATHWORK (Coming Soon) */}
             <div className="border border-stone/20 rounded-sm p-8 bg-obsidian/50 opacity-60 cursor-not-allowed h-full">
               <h3 className="font-bebas text-stone text-2xl tracking-tight mb-4">30-DAY BREATHWORK</h3>
               <p className="font-dm-sans text-stone/70 text-sm leading-relaxed mb-6 font-light">
@@ -219,8 +217,6 @@ Go hard.<br />Stay whole.          </h1>
                 Coming Soon
               </p>
             </div>
-
-            {/* Card 5: DOJO DNA (Coming Soon) */}
             <div className="border border-stone/20 rounded-sm p-8 bg-obsidian/50 opacity-60 cursor-not-allowed h-full">
               <h3 className="font-bebas text-stone text-2xl tracking-tight mb-4">DOJO DNA</h3>
               <p className="font-dm-sans text-stone/70 text-sm leading-relaxed mb-6 font-light">
@@ -229,56 +225,6 @@ Go hard.<br />Stay whole.          </h1>
               <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
                 Coming Soon
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED SESSION Section */}
-      <section
-        id="featured"
-        data-fade
-        className={`${fadeClass('featured')} py-32 px-4 bg-forest transition-opacity duration-600`}
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-6">
-              <p className="font-space-mono text-bone text-xs tracking-widest uppercase">
-                Session 03
-              </p>
-              <h2 className="font-bebas text-bone text-5xl sm:text-6xl tracking-tight text-balance">
-                THE GAP
-              </h2>
-              <p className="font-dm-sans text-bone text-lg leading-relaxed font-light">
-                Between what happens to you and how you respond, there is a gap. This session trains access to it. Harvard MRI research confirms 8 weeks of practice physically rewires the brain.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a
-                  href="https://open.spotify.com/episode/4J9e984SZstjJRnBwImilx"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3 rounded bg-clay text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center sm:justify-start"
-                >
-                  <Music size={16} />
-                  Listen on Spotify
-                </a>
-                <a
-                  href="https://youtu.be/yEBoKItb8kw"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-space-mono text-stone text-xs tracking-widest uppercase underline underline-offset-4 hover:text-bone transition-colors duration-300 flex items-center gap-2"
-                >
-                  Watch on YouTube →
-                </a>
-              </div>
-            </div>
-
-            {/* Right Decorative Text */}
-            <div className="flex items-center justify-center">
-              <div className="text-stone/10 font-bebas text-8xl sm:text-9xl lg:text-[12rem] leading-none tracking-tighter break-words text-center">
-                THE GAP
-              </div>
             </div>
           </div>
         </div>
@@ -299,8 +245,6 @@ Go hard.<br />Stay whole.          </h1>
               of waking hours, the average mind is somewhere other than the present moment. That is not a character flaw. It is an untrained default.
             </p>
           </div>
-
-          {/* Citation */}
           <a
             href="https://science.sciencemag.org/content/330/6006/932"
             target="_blank"
@@ -309,8 +253,6 @@ Go hard.<br />Stay whole.          </h1>
           >
             Harvard University. Killingsworth and Gilbert. 250,000 data points.
           </a>
-
-          {/* Conclusion */}
           <p className="font-playfair text-bone text-2xl sm:text-3xl italic leading-relaxed pt-8">
             The Dojo trains your return.
           </p>
@@ -325,7 +267,6 @@ Go hard.<br />Stay whole.          </h1>
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            {/* Left: Founder Photo */}
             <div className="aspect-square rounded-sm overflow-hidden">
               <img
                 src="/Cait.jpg"
@@ -333,7 +274,6 @@ Go hard.<br />Stay whole.          </h1>
                 className="w-full h-full object-cover object-top"
               />
             </div>
-            {/* Right: Bio */}
             <div className="space-y-6">
               <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
                 Founder
@@ -362,8 +302,6 @@ Go hard.<br />Stay whole.          </h1>
           <p className="font-dm-sans text-stone text-lg leading-relaxed font-light">
             Free on Spotify and YouTube. No sign-up required.
           </p>
-
-          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             <a
               href="https://open.spotify.com/show/4Cz6WuByhIpTo1oeaGkIAm?si=a0b1bebb7f854974"
