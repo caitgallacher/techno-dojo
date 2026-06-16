@@ -3,7 +3,7 @@
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { EmailSubscribe } from '@/components/EmailSubscribe'
-import { Music } from 'lucide-react'
+import { Music, Download } from 'lucide-react'
 
 export default function BreathworkPage() {
   const days = [
@@ -65,13 +65,13 @@ export default function BreathworkPage() {
       {/* HERO */}
       <section className="min-h-screen pt-40 flex flex-col items-center justify-center px-4 text-center">
         <div className="space-y-8 max-w-3xl">
-          <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
+          <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase">
             THE BREATHWORK PROTOCOL
           </p>
           <h1 className="font-bebas text-bone text-5xl sm:text-6xl lg:text-7xl leading-tight tracking-tight text-balance">
             A 30-Day Nervous System Training Program
           </h1>
-          <p className="font-dm-sans text-stone text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
+          <p className="font-dm-sans text-[#9A9A92] text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
             Three phases. One transformation. Train your nervous system to live resiliently, at full intensity.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
@@ -99,16 +99,17 @@ export default function BreathworkPage() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-2">
             <button
               onClick={() => document.getElementById('email-capture')?.scrollIntoView({ behavior: 'smooth' })}
-              className="font-space-mono text-stone text-xs tracking-widest uppercase hover:text-bone transition-colors duration-300"
+              className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase hover:text-bone transition-colors duration-300"
             >
               JOIN THE LIST
             </button>
-            <button
-              onClick={() => document.getElementById('protocol')?.scrollIntoView({ behavior: 'smooth' })}
-              className="font-space-mono text-stone text-xs tracking-widest uppercase hover:text-bone transition-colors duration-300"
+            <a
+              href="#protocol"
+              onClick={(e) => { e.preventDefault(); document.getElementById('protocol')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="px-6 py-3 rounded border border-stone/40 text-[#9A9A92] font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:border-bone hover:text-bone"
             >
               JUMP TO THE PROTOCOL ↓
-            </button>
+            </a>
           </div>
         </div>
         <div className="h-px bg-clay w-12 mt-16" />
@@ -121,7 +122,7 @@ export default function BreathworkPage() {
             <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-4">
               THE PROTOCOL
             </p>
-            <p className="font-dm-sans text-stone text-sm leading-relaxed font-light">
+            <p className="font-dm-sans text-[#9A9A92] text-sm leading-relaxed font-light">
               This is a structured 30-day breathwork progression. Build your control, understand your capacity, and reinforce your self-trust.
             </p>
           </div>
@@ -129,18 +130,31 @@ export default function BreathworkPage() {
             <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-4">
               THE SCIENCE
             </p>
-            <p className="font-dm-sans text-stone text-sm leading-relaxed font-light">
-              Breathwork produces measurable changes in interoceptive awareness, nervous system regulation, heart rate variability, and CO2 tolerance. It doesn&apos;t just change how you feel. It changes what your nervous system can handle.
+            <p className="font-dm-sans text-[#9A9A92] text-sm leading-relaxed font-light">
+              Breathwork produces measurable changes in interoceptive awareness, your ability to read your own internal signals under pressure, nervous system regulation, heart rate variability, and CO2 tolerance. It doesn&apos;t just change how you feel. It changes what your nervous system can handle.
             </p>
           </div>
           <div className="text-center">
             <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-4">
               THE COMMITMENT
             </p>
-            <p className="font-dm-sans text-stone text-sm leading-relaxed font-light">
+            <p className="font-dm-sans text-[#9A9A92] text-sm leading-relaxed font-light">
               Less than 10 minutes. 30 days. The results compound.
             </p>
           </div>
+        </div>
+
+        {/* PDF Download Button */}
+        <div className="max-w-7xl mx-auto mt-12 flex justify-center">
+          <a
+            href="/30-Day-Breathwork-Protocol-Science-Guide.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded border border-stone/40 text-[#9A9A92] font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:border-bone hover:text-bone flex items-center gap-2"
+          >
+            <Download size={14} />
+            Download the Science Guide
+          </a>
         </div>
       </section>
 
@@ -149,7 +163,7 @@ export default function BreathworkPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
             {/* Phase 1 */}
-            <div className="p-8 md:pr-12">
+            <div className="p-8 md:pr-12 border-b md:border-b-0 border-[#2E3D28]">
               <p className="font-space-mono text-bone text-xs tracking-widest uppercase mb-2">PHASE 1</p>
               <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight mb-2">CONTROL</h2>
               <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase mb-6">DAYS 1–10</p>
@@ -157,8 +171,8 @@ export default function BreathworkPage() {
                 You learn to regulate. You build the foundation everything else stands on.
               </p>
             </div>
-            {/* Divider */}
-            <div className="hidden md:block border-l border-[#2E3D28] p-8 md:px-12">
+            {/* Phase 2 */}
+            <div className="p-8 md:px-12 border-b md:border-b-0 md:border-l border-[#2E3D28]">
               <p className="font-space-mono text-bone text-xs tracking-widest uppercase mb-2">PHASE 2</p>
               <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight mb-2">CAPACITY</h2>
               <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase mb-6">DAYS 11–20</p>
@@ -166,26 +180,8 @@ export default function BreathworkPage() {
                 You find out how far your range actually goes. Your body&apos;s stress signals get louder, and you stay regulated anyway.
               </p>
             </div>
-            {/* Mobile Phase 2 */}
-            <div className="md:hidden border-t border-[#2E3D28] p-8">
-              <p className="font-space-mono text-bone text-xs tracking-widest uppercase mb-2">PHASE 2</p>
-              <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight mb-2">CAPACITY</h2>
-              <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase mb-6">DAYS 11–20</p>
-              <p className="font-dm-sans text-[#9A9A92] text-base leading-relaxed font-light">
-                You find out how far your range actually goes. Your body&apos;s stress signals get louder, and you stay regulated anyway.
-              </p>
-            </div>
-            {/* Divider */}
-            <div className="hidden md:block border-l border-[#2E3D28] p-8 md:pl-12">
-              <p className="font-space-mono text-bone text-xs tracking-widest uppercase mb-2">PHASE 3</p>
-              <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight mb-2">SELF-TRUST</h2>
-              <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase mb-6">DAYS 21–30</p>
-              <p className="font-dm-sans text-[#9A9A92] text-base leading-relaxed font-light">
-                The guidance fades and you lead yourself. By Day 30 the voice is nearly gone. The practice is yours.
-              </p>
-            </div>
-            {/* Mobile Phase 3 */}
-            <div className="md:hidden border-t border-[#2E3D28] p-8">
+            {/* Phase 3 */}
+            <div className="p-8 md:pl-12 md:border-l border-[#2E3D28]">
               <p className="font-space-mono text-bone text-xs tracking-widest uppercase mb-2">PHASE 3</p>
               <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight mb-2">SELF-TRUST</h2>
               <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase mb-6">DAYS 21–30</p>
@@ -231,7 +227,6 @@ export default function BreathworkPage() {
                     </svg>
                   </div>
                 </div>
-                <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase">AVAILABLE JULY 1</p>
               </div>
             ))}
           </div>
@@ -281,10 +276,7 @@ export default function BreathworkPage() {
 
       {/* EMAIL CAPTURE */}
       <div id="email-capture">
-        <EmailSubscribe
-          headingText="START JULY 1. NOT A DAY LATER."
-          descriptionText="Join the list. Be the first to know when the protocol drops."
-        />
+        <EmailSubscribe />
       </div>
 
       <Footer />
