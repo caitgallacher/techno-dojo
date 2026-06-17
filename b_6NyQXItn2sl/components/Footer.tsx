@@ -5,6 +5,16 @@ export function Footer() {
   return (
     <footer className="bg-obsidian border-t border-stone">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        {/* Logo Mark */}
+        <div className="flex justify-center mb-8">
+          <img
+            src="/techno-dojo-mark.png"
+            alt="Techno Dojo mark: a gold arc representing potential, a bone arc representing clarity, and a clay circle representing inner drive"
+            className="w-12 h-12"
+          />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Left: Wordmark */}
           <div className="flex flex-col gap-2">
@@ -69,7 +79,8 @@ export function Footer() {
           {/* Right: Tagline */}
           <div className="flex justify-end items-start text-right">
             <p className="font-space-mono text-stone text-xs tracking-widest">
-Go hard.<br />Stay whole.            </p>
+              Go hard.<br />Stay whole.
+            </p>
           </div>
         </div>
 

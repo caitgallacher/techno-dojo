@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 import { EmailSubscribe } from '@/components/EmailSubscribe'
+import { EmailPopup } from '@/components/EmailPopup'
 import { Play, Music } from 'lucide-react'
 
 export default function Home() {
@@ -37,6 +38,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-obsidian">
       <Navigation />
+      <EmailPopup />
 
       {/* HERO Section */}
       <section
@@ -117,7 +119,6 @@ export default function Home() {
             WHY YOU ARE HERE
           </p>
 
-          {/* Line 1 */}
           <div className="mb-12">
             <h2 className="font-bebas text-bone text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
               YOU GO HARD.
@@ -127,10 +128,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Divider */}
           <div className="h-px bg-stone/20 mb-12" />
 
-          {/* Line 2 */}
           <div className="mb-12">
             <h2 className="font-bebas text-bone text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
               YOU WANT TO KEEP GOING, BUT SOMETHING IS OFF.
@@ -140,10 +139,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Divider */}
           <div className="h-px bg-stone/20 mb-12" />
 
-          {/* Line 3 */}
           <div className="mb-12">
             <h2 className="font-bebas text-bone text-4xl sm:text-5xl lg:text-6xl tracking-tight mb-6">
               THE VERSION OF YOU DOING THE LIVING FEELS LESS ALIVE.
@@ -153,10 +150,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Divider */}
           <div className="h-px bg-stone/20 mb-12" />
 
-          {/* Line 4 — Playfair italic conclusion */}
           <p className="font-playfair text-bone text-2xl sm:text-3xl italic leading-relaxed">
             This is your practice. It doesn&apos;t ask you to slow down. It builds the nervous system that makes life at full intensity possible.
           </p>
@@ -208,15 +203,21 @@ export default function Home() {
                 </p>
               </div>
             </Link>
-            <div className="border border-stone/20 rounded-sm p-8 bg-obsidian/50 opacity-60 cursor-not-allowed h-full">
-              <h3 className="font-bebas text-stone text-2xl tracking-tight mb-4">30-DAY BREATHWORK</h3>
-              <p className="font-dm-sans text-stone/70 text-sm leading-relaxed mb-6 font-light">
-                A structured 30-day protocol that builds your nervous system&apos;s capacity to match the life you&apos;re living.
-              </p>
-              <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
-                Coming Soon
-              </p>
-            </div>
+
+            {/* Card 4: 30-DAY BREATHWORK — NOW LIVE */}
+            <Link href="/breathwork">
+              <div className="card-lift border border-bone rounded-sm p-8 bg-obsidian hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
+                <h3 className="font-bebas text-bone text-2xl tracking-tight mb-4">30-DAY BREATHWORK</h3>
+                <p className="font-dm-sans text-stone text-sm leading-relaxed mb-6 font-light">
+                  A structured 30-day protocol that builds your nervous system&apos;s capacity to match the life you&apos;re living.
+                </p>
+                <p className="font-space-mono text-clay text-xs tracking-widest uppercase">
+                  Coming Soon
+                </p>
+              </div>
+            </Link>
+
+            {/* Card 5: DOJO DNA (Coming Soon) */}
             <div className="border border-stone/20 rounded-sm p-8 bg-obsidian/50 opacity-60 cursor-not-allowed h-full">
               <h3 className="font-bebas text-stone text-2xl tracking-tight mb-4">DOJO DNA</h3>
               <p className="font-dm-sans text-stone/70 text-sm leading-relaxed mb-6 font-light">

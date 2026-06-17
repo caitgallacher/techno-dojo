@@ -12,6 +12,7 @@ export function Navigation() {
     { label: 'SESSIONS', href: '/sessions' },
     { label: 'DAILY DOJO', href: '/daily-dojo' },
     { label: 'RITUALS', href: '/rituals' },
+    { label: 'BREATHWORK', href: '/breathwork' },
   ]
 
   const navLinks = [
