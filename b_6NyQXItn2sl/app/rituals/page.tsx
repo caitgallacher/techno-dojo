@@ -55,7 +55,6 @@ export default function RitualsPage() {
       <section className="bg-obsidian py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Column 1 */}
             <div className="text-center">
               <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-3">
                 WHAT IT IS
@@ -64,7 +63,6 @@ export default function RitualsPage() {
                 A guided practice built for a specific moment in your life. Not a daily habit or general relaxation tool. A precise practice for when something is happening.
               </p>
             </div>
-            {/* Column 2 */}
             <div className="text-center">
               <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-3">
                 WHAT IT IS NOT
@@ -73,7 +71,6 @@ export default function RitualsPage() {
                 Not a recurring schedule. Not a wind-down. A deliberate act of meeting a moment that matters with your full attention rather than letting it pass unconsciously.
               </p>
             </div>
-            {/* Column 3 */}
             <div className="text-center">
               <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-3">
                 WHY IT WORKS
@@ -88,7 +85,7 @@ export default function RitualsPage() {
 
       {/* THEME 01 — RESET POINTS */}
       <section className="bg-forest py-20 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight mb-2">
             RESET POINTS
           </h2>
@@ -110,30 +107,30 @@ export default function RitualsPage() {
           </p>
 
           {/* RESET POINTS PRACTICES */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {/* NEW MONTH CARD */}
-            <div className="flex-1 border border-stone/30 rounded-sm p-6 bg-forest/50">
+            <div className="border border-stone/30 rounded-sm p-4 bg-forest/50">
               <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-2">
                 NEW MONTH
               </p>
-              <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-4">
+              <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-3">
                 17 MIN
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 <a
                   href="https://open.spotify.com/episode/1EB6TFYuu1xBYpzOnMrINr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-8 h-8 rounded hover:bg-stone/10 transition-colors"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors"
                   title="Listen on Spotify"
                 >
-                  <Music size={18} className="text-clay" />
+                  <Music size={16} className="text-clay" />
                 </a>
                 <a
                   href="https://youtu.be/0MzghuT9GmI"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-8 h-8 rounded hover:bg-stone/10 transition-colors"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors"
                   title="Watch on YouTube"
                 >
                   <svg className="w-4 h-4 text-clay" fill="currentColor" viewBox="0 0 24 24">
@@ -143,11 +140,68 @@ export default function RitualsPage() {
               </div>
             </div>
 
-            {/* NEW YEAR COMING SOON */}
-            <div className="flex-1 border border-stone/30 rounded-sm p-6 bg-forest/50 opacity-50">
-              <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
-                COMING SOON
+            {/* MID-YEAR REVIEW CARD */}
+            <div className="border border-stone/30 rounded-sm p-4 bg-forest/50">
+              <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-2">
+                MID-YEAR REVIEW
               </p>
+              <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-3">
+                16 MIN
+              </p>
+              <div className="flex gap-2">
+                <a
+                  href="https://open.spotify.com/episode/2A8yoApqOqkyR43eAlIdxn?si=QgnHZFJaTkiV0yv3xiAP6Q"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors"
+                  title="Listen on Spotify"
+                >
+                  <Music size={16} className="text-clay" />
+                </a>
+                <a
+                  href="https://youtu.be/y4BnQiivI2o"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors"
+                  title="Watch on YouTube"
+                >
+                  <svg className="w-4 h-4 text-clay" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* MID-YEAR REVIEW FOLLOW-UP CARD */}
+            <div className="border border-stone/30 rounded-sm p-4 bg-forest/50">
+              <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-2">
+                MID-YEAR REVIEW: FOLLOW-UP
+              </p>
+              <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-3">
+                11 MIN
+              </p>
+              <div className="flex gap-2">
+                <a
+                  href="https://open.spotify.com/episode/30q2SWbsbVktM2ZbQAc4hi?si=whPqBE9PSe2OG4SJQTYydQ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors"
+                  title="Listen on Spotify"
+                >
+                  <Music size={16} className="text-clay" />
+                </a>
+                <a
+                  href="https://youtu.be/A7YU8Yy_5SI"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors"
+                  title="Watch on YouTube"
+                >
+                  <svg className="w-4 h-4 text-clay" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -166,7 +220,6 @@ export default function RitualsPage() {
             For a breakup. A move. Leaving a job. Arriving somewhere new. The end of something you built. The beginning of something you cannot yet see clearly. Life transitions, even positive ones, involve real loss. That loss deserves to be acknowledged, not just powered through. This practice is for the in-between. The moment after something ends and before what comes next begins. It gives the nervous system a place to put what it is carrying so you can move forward without the weight of the past.
           </p>
 
-          {/* COMING SOON */}
           <div className="text-center mb-8">
             <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-6">
               COMING SOON — MOVING COUNTRIES. STARTING OVER. ENDING A CHAPTER.
@@ -204,9 +257,7 @@ export default function RitualsPage() {
             </a>
           </p>
 
-          {/* UNDER LOAD PRACTICES */}
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* MOTHER'S DAY CARD */}
             <div className="flex-1 border border-stone/30 rounded-sm p-6 bg-forest/50">
               <p className="font-space-mono text-clay text-xs tracking-widest uppercase mb-2">
                 MOTHER&apos;S DAY
@@ -219,14 +270,11 @@ export default function RitualsPage() {
                 <a href="https://youtu.be/MPKGFIQRFL0" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center w-8 h-8 rounded hover:bg-stone/10 transition-colors" title="Watch on YouTube"><svg className="w-4 h-4 text-clay" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
               </div>
             </div>
-            {/* GRIEF COMING SOON */}
             <div className="flex-1 border border-stone/30 rounded-sm p-6 bg-forest/50 opacity-50">
               <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
                 COMING SOON
               </p>
             </div>
-
-            {/* BURNOUT COMING SOON */}
             <div className="flex-1 border border-stone/30 rounded-sm p-6 bg-forest/50 opacity-50">
               <p className="font-space-mono text-stone text-xs tracking-widest uppercase">
                 COMING SOON
@@ -249,7 +297,6 @@ export default function RitualsPage() {
             For the night before something big. The morning after a disappointment. The moment before a challenge. The decision that will change everything. Ambitious people know this feeling: the weight of a moment where performance, outcome, and identity all converge at once. This practice trains you to meet those moments with clarity rather than noise. Not to eliminate the pressure, but to show up ready to handle it.
           </p>
 
-          {/* COMING SOON */}
           <div className="text-center">
             <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-6">
               COMING SOON — BEFORE A BIG DECISION. AFTER A SETBACK. BEFORE A PERFORMANCE.
