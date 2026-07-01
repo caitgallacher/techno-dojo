@@ -52,21 +52,21 @@ export default function Home() {
           <p className="font-dm-sans text-stone text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
             You go hard. You live at full intensity. This practice builds the nervous system that makes sure you can keep going.
           </p>
-          <div className="flex flex-row gap-4 justify-center items-center pt-4 flex-wrap">
+          <div className="flex flex-row gap-3 justify-center items-center pt-4 flex-wrap">
             <a href="https://open.spotify.com/show/4Cz6WuByhIpTo1oeaGkIAm?si=a0b1bebb7f854974" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
-              <Music size={16} />
-              Listen on Spotify
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              <Music size={14} />
+              Spotify
             </a>
             <a href="https://youtube.com/@thetechnodojo?si=qAYMs3M1Kk71LuSt" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
-              <Play size={16} className="fill-current" />
-              Watch on YouTube
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              <Play size={14} className="fill-current" />
+              YouTube
             </a>
             <a href="https://www.patreon.com/thetechnodojo" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
-              <PatreonIcon size={16} />
-              Listen on Patreon
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              <PatreonIcon size={14} />
+              Patreon
             </a>
           </div>
         </div>
@@ -209,21 +209,21 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight text-balance">START YOUR PRACTICE</h2>
           <p className="font-dm-sans text-stone text-lg leading-relaxed font-light">Your nervous system is trainable. Every session builds your capacity to keep living life at full intensity.</p>
-          <div className="flex flex-row gap-4 justify-center pt-4 flex-wrap">
+          <div className="flex flex-row gap-3 justify-center pt-4 flex-wrap">
             <a href="https://open.spotify.com/show/4Cz6WuByhIpTo1oeaGkIAm?si=a0b1bebb7f854974" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center">
-              <Music size={16} />
-              Listen on Spotify
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center">
+              <Music size={14} />
+              Spotify
             </a>
             <a href="https://youtube.com/@thetechnodojo?si=qAYMs3M1Kk71LuSt" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center">
-              <Play size={16} className="fill-current" />
-              Watch on YouTube
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center">
+              <Play size={14} className="fill-current" />
+              YouTube
             </a>
             <a href="https://www.patreon.com/thetechnodojo" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center">
-              <PatreonIcon size={16} />
-              Listen on Patreon
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center">
+              <PatreonIcon size={14} />
+              Patreon
             </a>
           </div>
         </div>

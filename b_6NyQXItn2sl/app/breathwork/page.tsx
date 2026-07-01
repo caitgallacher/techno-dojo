@@ -115,30 +115,30 @@ export default function BreathworkPage() {
           <p className="font-dm-sans text-[#9A9A92] text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
             Three phases. One transformation. Train your nervous system to live resiliently, at full intensity.
           </p>
-          <div className="flex flex-row gap-4 justify-center items-center pt-2 flex-wrap">
+          <div className="flex flex-row gap-3 justify-center items-center pt-2 flex-wrap">
             <a href="#protocol"
               onClick={(e) => { e.preventDefault(); document.getElementById('protocol')?.scrollIntoView({ behavior: 'smooth' }) }}
-              className="px-6 py-3 rounded border border-stone/40 text-[#9A9A92] font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:border-bone hover:text-bone">
+              className="px-6 py-3 rounded bg-clay text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105">
               JUMP TO THE PROTOCOL ↓
             </a>
           </div>
-          <div className="flex flex-row gap-4 justify-center items-center pt-2 flex-wrap">
+          <div className="flex flex-row gap-3 justify-center items-center pt-2 flex-wrap">
             <a href={SPOTIFY_SHOW} target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
-              <Music size={16} />
-              Listen on Spotify
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              <Music size={14} />
+              Spotify
             </a>
             <a href={YOUTUBE_CHANNEL} target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
-              Watch on YouTube
+              YouTube
             </a>
             <a href={PATREON_GENERAL} target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
-              <PatreonIcon size={16} />
-              Listen on Patreon
+              className="px-4 py-2 rounded border border-bone text-bone font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              <PatreonIcon size={14} />
+              Patreon
             </a>
           </div>
           <div className="flex flex-row gap-6 justify-center items-center pt-2">
