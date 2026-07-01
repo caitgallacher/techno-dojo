@@ -87,13 +87,13 @@ const PatreonIcon = ({ size = 16 }: { size?: number }) => (
 )
 
 const faqItems = [
-  { q: 'What is a 30-day breathwork protocol?', a: 'A 30-day breathwork protocol is a structured daily breathing practice designed to progressively train breathing control and nervous system regulation. Unlike standalone breathwork sessions, a protocol builds in a deliberate sequence. Breath patterns, breath holds, and training intensity increase as your nervous system adapts. The Techno Dojo 30-Day Breathwork Protocol moves through three phases: Control (Days 1–10), Capacity (Days 11–20), and Self-Trust (Days 21–30). Each phase introduces new patterns and new science as you are ready for it. Less than 10 minutes a day. Free on Spotify and YouTube.' },
+  { q: 'What is a 30-day breathwork protocol?', a: 'A 30-day breathwork protocol is a structured daily breathing practice designed to progressively train breathing control and nervous system regulation. Unlike standalone breathwork sessions, a protocol builds in a deliberate sequence. Breath patterns, breath holds, and training intensity increase as your nervous system adapts. The Techno Dojo 30-Day Breathwork Protocol moves through three phases: Control (Days 1–10), Capacity (Days 11–20), and Self-Trust (Days 21–30). Each phase introduces new patterns and new science as you are ready for it. Less than 10 minutes a day. Free on Spotify, YouTube, and Patreon.' },
   { q: 'What does breathwork do for the nervous system?', a: 'Breathwork can influence autonomic nervous system activity. That is, the system that controls your stress response, recovery, and emotional regulation. Controlled breathing, particularly patterns with extended exhales, may increase vagal activity and support parasympathetic nervous system activity, helping the body shift out of fight-or-flight mode. Some forms of slow, controlled breathing have been shown to improve heart rate variability (HRV), a key biomarker of nervous system resilience, and build tolerance to air-hunger sensations, which may help you respond to internal stress signals more calmly. With consistent practice, regulation skills can become more familiar and easier to access. Your nervous system practices returning to regulation more quickly and efficiently, which it then applies when faced with real-world stress and pressure.' },
   { q: 'How does breathwork improve HRV?', a: 'Heart rate variability (HRV) reflects how flexibly your autonomic nervous system responds to stress, recovery, and changing demands. Higher HRV is often associated with greater autonomic flexibility, while chronically low HRV can be associated with stress load or reduced recovery. For driven, ambitious individuals, a chronically activated state can feel like being stuck in go-mode: high output, limited restoration. Slow, controlled breathing can improve HRV by increasing respiratory sinus arrhythmia and supporting vagal activity. Breathing at a slow pace, often around six breaths per minute, has been shown to coordinate breathing, heart-rate, and blood-pressure rhythms in a way that supports HRV, baroreflex function, and autonomic regulation. HRV biofeedback and resonance-breathing research suggest that consistent practice over several weeks can produce measurable improvements in HRV. This protocol is designed to build that consistency from Day 1.' },
   { q: 'Do I need experience with breathwork to start?', a: 'No. Day 1 starts from the beginning. The protocol is designed to be progressive. Each phase introduces new patterns and new science as you are ready. No experience required. Start on Day 1 and build to Day 30.' },
   { q: 'How is this different from other breathwork programs?', a: 'Most breathwork content is standalone sessions with no connection between them. This is a structured protocol with a deliberate progression through breath patterns, science, and affirmations that build over 30 days. The results compound because the training compounds.' },
   { q: 'How long are the sessions?', a: 'The sessions are less than 10 minutes per day and are designed to fit seamlessly into your day. Morning, evening, afternoon, or wherever you find time to train.' },
-  { q: 'Is breathwork free?', a: 'Yes. The full 30-day protocol is free on Spotify and YouTube. No account or sign-up required to listen. The practice is the product.' },
+  { q: 'Is breathwork free?', a: 'Yes. The full 30-day protocol is free on Spotify, YouTube, and Patreon. No account or sign-up required to listen. The practice is the product.' },
   { q: 'What happens after Day 30?', a: 'Your breathwork practice becomes your own. By Day 30, the guidance has faded, and you are leading yourself. The regulation skills you have built are there to support you, and you know what you need depending on your state.' },
   { q: 'Is breathwork safe for everyone?', a: 'This protocol is designed to be gentle and beginner-friendly, but breathwork is not one-size-fits-all. If you are pregnant, have a heart condition, epilepsy, severe anxiety or panic symptoms, respiratory issues, or any medical condition that could be affected by breath holds or changes in breathing, consult a qualified healthcare professional before practicing. Never practice breathwork while driving, in water, or in any situation where dizziness could put you at risk.' },
 ]
@@ -115,9 +115,16 @@ export default function BreathworkPage() {
           <p className="font-dm-sans text-[#9A9A92] text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
             Three phases. One transformation. Train your nervous system to live resiliently, at full intensity.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 flex-wrap">
+          <div className="flex flex-row gap-4 justify-center items-center pt-2 flex-wrap">
+            <a href="#protocol"
+              onClick={(e) => { e.preventDefault(); document.getElementById('protocol')?.scrollIntoView({ behavior: 'smooth' }) }}
+              className="px-6 py-3 rounded border border-stone/40 text-[#9A9A92] font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:border-bone hover:text-bone">
+              JUMP TO THE PROTOCOL ↓
+            </a>
+          </div>
+          <div className="flex flex-row gap-4 justify-center items-center pt-2 flex-wrap">
             <a href={SPOTIFY_SHOW} target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded bg-clay text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
               <Music size={16} />
               Listen on Spotify
             </a>
@@ -134,17 +141,12 @@ export default function BreathworkPage() {
               Listen on Patreon
             </a>
           </div>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-2">
+          <div className="flex flex-row gap-6 justify-center items-center pt-2">
             <button
               onClick={() => document.getElementById('email-capture')?.scrollIntoView({ behavior: 'smooth' })}
               className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase hover:text-bone transition-colors duration-300">
               JOIN THE LIST
             </button>
-            <a href="#protocol"
-              onClick={(e) => { e.preventDefault(); document.getElementById('protocol')?.scrollIntoView({ behavior: 'smooth' }) }}
-              className="px-6 py-3 rounded border border-stone/40 text-[#9A9A92] font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:border-bone hover:text-bone">
-              JUMP TO THE PROTOCOL ↓
-            </a>
           </div>
         </div>
         <div className="h-px bg-clay w-12 mt-16" />

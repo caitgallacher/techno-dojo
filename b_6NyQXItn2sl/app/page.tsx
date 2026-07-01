@@ -50,16 +50,25 @@ export default function Home() {
             Go hard.<br />Stay whole.
           </h1>
           <p className="font-dm-sans text-stone text-lg sm:text-xl leading-relaxed text-balance max-w-2xl mx-auto font-light">
-            You were built for an intense life. This practice builds the nervous system that supports you while you live it. Science-backed. Free on Spotify and YouTube.
+            You go hard. You live at full intensity. This practice builds the nervous system that makes sure you can keep going.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+          <div className="flex flex-row gap-4 justify-center items-center pt-4 flex-wrap">
             <a href="https://open.spotify.com/show/4Cz6WuByhIpTo1oeaGkIAm?si=a0b1bebb7f854974" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded bg-clay text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              <Music size={16} />
+              Listen on Spotify
+            </a>
+            <a href="https://youtube.com/@thetechnodojo?si=qAYMs3M1Kk71LuSt" target="_blank" rel="noopener noreferrer"
+              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
               <Play size={16} className="fill-current" />
-              Start Listening. It&apos;s Free
+              Watch on YouTube
+            </a>
+            <a href="https://www.patreon.com/thetechnodojo" target="_blank" rel="noopener noreferrer"
+              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2">
+              <PatreonIcon size={16} />
+              Listen on Patreon
             </a>
           </div>
-          <p className="font-space-mono text-stone text-xs tracking-widest uppercase pt-4">Available on Spotify and YouTube</p>
         </div>
       </section>
 
@@ -199,10 +208,10 @@ export default function Home() {
       <section id="listen" data-fade className={`${fadeClass('listen')} py-32 px-4 bg-obsidian transition-opacity duration-600`}>
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight text-balance">START YOUR PRACTICE</h2>
-          <p className="font-dm-sans text-stone text-lg leading-relaxed font-light">Free on Spotify and YouTube. No sign-up required.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 flex-wrap">
+          <p className="font-dm-sans text-stone text-lg leading-relaxed font-light">Your nervous system is trainable. Every session builds your capacity to keep living life at full intensity.</p>
+          <div className="flex flex-row gap-4 justify-center pt-4 flex-wrap">
             <a href="https://open.spotify.com/show/4Cz6WuByhIpTo1oeaGkIAm?si=a0b1bebb7f854974" target="_blank" rel="noopener noreferrer"
-              className="px-6 py-3 rounded bg-clay text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center">
+              className="px-6 py-3 rounded border-2 border-bone text-bone font-space-mono font-normal tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 justify-center">
               <Music size={16} />
               Listen on Spotify
             </a>
