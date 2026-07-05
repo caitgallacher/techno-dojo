@@ -26,7 +26,7 @@ const days = [
     spotify: 'https://open.spotify.com/episode/6TSv9dPA0JZ7OBgTlitmqT',
     youtube: 'https://youtu.be/pCFkOqgY1gk',
     patreon: 'https://www.patreon.com/thetechnodojo/posts/day-4-vagus-30-162523119' },
-  { { day: 5, phase: 'CONTROL', pattern: '4-0-6-0', duration: '8:15',
+  { day: 5, phase: 'CONTROL', pattern: '4-0-6-0', duration: '8:15',
     spotify: 'https://open.spotify.com/episode/3AkduXJgQhyzzOwFt020h7',
     youtube: 'https://youtu.be/0EhFH0qrz0E',
     patreon: 'https://www.patreon.com/thetechnodojo/posts/day-5-nervous-30-162523214' },
