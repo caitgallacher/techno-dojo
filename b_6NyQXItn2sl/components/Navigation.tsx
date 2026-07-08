@@ -17,7 +17,7 @@ export function Navigation() {
 
   const navLinks = [
     { label: 'LISTEN', href: '#listen' },
-    { label: 'JOIN', href: '#join' },
+    { label: 'JOIN', href: '/join' },
   ]
 
   return (
