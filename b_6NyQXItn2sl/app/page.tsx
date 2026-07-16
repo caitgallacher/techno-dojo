@@ -16,7 +16,7 @@ const PatreonIcon = ({ size = 16 }: { size?: number }) => (
 
 export default function Home() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set(['hero', 'philosophy', 'why', 'products', 'science', 'about', 'listen', 'join'])
+    new Set(['hero', 'philosophy', 'why', 'products', 'science', 'listen', 'join'])
   )
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Home() {
       <Navigation />
       <EmailPopup />
 
-      {/* HERO Section */}
+      {/* HERO */}
       <section id="hero" data-fade className={`${fadeClass('hero')} min-h-screen pt-40 flex flex-col items-center justify-center px-4 text-center transition-opacity duration-600`}>
         <div className="space-y-8 max-w-3xl">
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase">NERVOUS SYSTEM TRAINING</p>
@@ -69,10 +69,11 @@ export default function Home() {
               Patreon
             </a>
           </div>
+          <p className="font-space-mono text-stone text-xs tracking-widest uppercase pt-2">Available on Spotify, YouTube, and Patreon</p>
         </div>
       </section>
 
-      {/* PHILOSOPHY Section */}
+      {/* PHILOSOPHY */}
       <section id="philosophy" data-fade className={`${fadeClass('philosophy')} py-32 px-4 bg-obsidian transition-opacity duration-600`}>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
@@ -95,7 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY YOU ARE HERE Section */}
+      {/* WHY YOU ARE HERE */}
       <section id="why" data-fade className={`${fadeClass('why')} py-32 px-4 bg-obsidian transition-opacity duration-600`}>
         <div className="max-w-3xl mx-auto">
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase mb-16">WHY YOU ARE HERE</p>
@@ -126,7 +127,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRODUCTS Section */}
+      {/* PRODUCTS */}
       <section id="products" data-fade className={`${fadeClass('products')} py-32 px-4 bg-obsidian transition-opacity duration-600`}>
         <div className="max-w-7xl mx-auto">
           <p className="font-space-mono text-stone text-xs tracking-widest uppercase text-center mb-16">What We Build</p>
@@ -168,7 +169,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SCIENCE Section */}
+      {/* SCIENCE */}
       <section id="science" data-fade className={`${fadeClass('science')} py-32 px-4 bg-obsidian transition-opacity duration-600`}>
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <div className="space-y-4">
@@ -185,26 +186,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT Section */}
-      <section id="about" data-fade className={`${fadeClass('about')} py-32 px-4 bg-bone transition-opacity duration-600`}>
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="aspect-square rounded-sm overflow-hidden">
-              <img src="/Cait.jpg" alt="Cait Gallacher, founder of Techno Dojo, in Morocco at golden hour"
-                className="w-full h-full object-cover object-top" />
-            </div>
-            <div className="space-y-6">
-              <p className="font-space-mono text-stone text-xs tracking-widest uppercase">Founder</p>
-              <h2 className="font-bebas text-obsidian text-4xl sm:text-5xl tracking-tight text-balance">CAIT GALLACHER</h2>
-              <p className="font-dm-sans text-obsidian text-lg leading-relaxed font-light">
-                Former management consultant. MBA. National athlete, Team Canada All-Star Cheerleading. 200-hour yoga teacher training. 100-hour breathwork and meditation certification. Full-time traveller. Techno Dojo exists because she learned, through all of it, that the intensity and the stillness are not in opposition. One builds the capacity for the other.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LISTEN NOW Section */}
+      {/* LISTEN NOW */}
       <section id="listen" data-fade className={`${fadeClass('listen')} py-32 px-4 bg-obsidian transition-opacity duration-600`}>
         <div className="max-w-3xl mx-auto text-center space-y-8">
           <h2 className="font-bebas text-bone text-4xl sm:text-5xl tracking-tight text-balance">START YOUR PRACTICE</h2>
@@ -229,7 +211,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* EMAIL CAPTURE Section */}
       <EmailSubscribe />
       <Footer />
     </main>

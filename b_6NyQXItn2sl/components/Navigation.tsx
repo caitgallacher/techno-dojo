@@ -16,13 +16,12 @@ export function Navigation() {
   ]
 
   const navLinks = [
-    { label: 'LISTEN', href: '#listen' },
+    { label: 'ABOUT', href: '/about' },
     { label: 'JOIN', href: '/join' },
   ]
 
   return (
     <>
-      {/* Fixed Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-obsidian border-b border-stone/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Wordmark */}
@@ -33,7 +32,7 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8 items-center">
-            {/* Your DOJO Dropdown */}
+            {/* YOUR DOJO Dropdown */}
             <div className="relative group">
               <button className="font-space-mono text-stone text-xs tracking-widest hover:text-bone transition-colors duration-300 flex items-center gap-2">
                 YOUR DOJO
@@ -78,7 +77,7 @@ export function Navigation() {
       {/* Mobile Navigation Overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-40 bg-obsidian/95 backdrop-blur-sm mt-20 flex flex-col items-center justify-center gap-8 pt-20">
-          {/* Your DOJO Section */}
+          {/* YOUR DOJO Section */}
           <div className="flex flex-col gap-4">
             <button
               onClick={() => setIsDojoOpen(!isDojoOpen)}
