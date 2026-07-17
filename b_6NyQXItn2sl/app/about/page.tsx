@@ -28,7 +28,7 @@ export default function AboutPage() {
             <img
               src="/Cait.jpg"
               alt="Cait Gallacher, founder of Techno Dojo"
-              className="w-full object-cover object-top"
+              className="w-full object-cover object-[center_20%]"
               style={{ maxHeight: '70vh' }}
             />
           </div>
