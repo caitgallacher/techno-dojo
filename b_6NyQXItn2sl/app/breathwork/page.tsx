@@ -66,7 +66,7 @@ const days = [
     spotify: 'https://open.spotify.com/episode/4BEqNeLk5Cail5F62sdd05',
     youtube: 'https://youtu.be/q7WbzyPYhqk',
     patreon: 'https://www.patreon.com/thetechnodojo/posts/day-14-extending-162524045' },
- { day: 15, phase: 'CAPACITY', pattern: '5-3-7-3', duration: '8:29',
+  { day: 15, phase: 'CAPACITY', pattern: '5-3-7-3', duration: '8:29',
     spotify: 'https://open.spotify.com/episode/2afNvQMwVvvMjfL9eqESMd',
     youtube: 'https://youtu.be/g5-kaN26Wu8',
     patreon: 'https://www.patreon.com/thetechnodojo/posts/day-15-and-30-162524521' },
@@ -94,11 +94,11 @@ const days = [
     spotify: 'https://open.spotify.com/episode/1dNkZtJNsYFlr7OvZ0we4N',
     youtube: 'https://youtu.be/-j3kxExkeBo',
     patreon: 'https://www.patreon.com/thetechnodojo/posts/day-21-your-box-162582074' },
- { day: 22, phase: 'SELF-TRUST', pattern: '6-4-8-4', duration: '8:11',
+  { day: 22, phase: 'SELF-TRUST', pattern: '6-4-8-4', duration: '8:11',
     spotify: 'https://open.spotify.com/episode/0lyYL6jREVrKqD77WPlWsU',
     youtube: 'https://youtu.be/KJDT9Ut18pA',
     patreon: 'https://www.patreon.com/thetechnodojo/posts/day-22-active-30-162582134' },
-{ day: 23, phase: 'SELF-TRUST', pattern: '6-4-8-4', duration: '7:57',
+  { day: 23, phase: 'SELF-TRUST', pattern: '6-4-8-4', duration: '7:57',
     spotify: 'https://open.spotify.com/episode/7rkcf9gocGP2DAW3sYPf15',
     youtube: 'https://youtu.be/t_U6nLOYuwM',
     patreon: 'https://www.patreon.com/thetechnodojo/posts/day-23-reducing-162582182' },
@@ -119,11 +119,17 @@ const days = [
     youtube: 'https://youtu.be/PjkUbELaGtY',
     patreon: 'https://www.patreon.com/thetechnodojo/posts/day-27-active-30-162582362' },
   { day: 28, phase: 'SELF-TRUST', pattern: 'SELF-GUIDED', duration: '8:31',
-    spotify: SPOTIFY_SHOW, youtube: 'https://youtu.be/0C4sEpaShc8', patreon: PATREON_GENERAL },
+    spotify: null,
+    youtube: 'https://youtu.be/0C4sEpaShc8',
+    patreon: 'https://www.patreon.com/thetechnodojo/posts/day-28-unguided-162582400' },
   { day: 29, phase: 'SELF-TRUST', pattern: 'SELF-GUIDED', duration: '9:21',
-    spotify: SPOTIFY_SHOW, youtube: 'https://youtu.be/TN2OhJ2U2Rw', patreon: PATREON_GENERAL },
+    spotify: null,
+    youtube: 'https://youtu.be/TN2OhJ2U2Rw',
+    patreon: PATREON_GENERAL },
   { day: 30, phase: 'SELF-TRUST', pattern: 'SELF-GUIDED', duration: '10:00',
-    spotify: SPOTIFY_SHOW, youtube: 'https://youtu.be/IZQODmGrlKU', patreon: PATREON_GENERAL },
+    spotify: null,
+    youtube: 'https://youtu.be/IZQODmGrlKU',
+    patreon: PATREON_GENERAL },
 ]
 
 const phaseColor = {
@@ -146,6 +152,7 @@ const faqItems = [
   { q: 'How is this different from other breathwork programs?', a: 'Most breathwork content is standalone sessions with no connection between them. This is a structured protocol with a deliberate progression through breath patterns, science, and affirmations that build over 30 days. The results compound because the training compounds.' },
   { q: 'How long are the sessions?', a: 'The sessions are less than 10 minutes per day and are designed to fit seamlessly into your day. Morning, evening, afternoon, or wherever you find time to train.' },
   { q: 'Is breathwork free?', a: 'Yes. The full 30-day protocol is free on Spotify, YouTube, and Patreon. No account or sign-up required to listen. The practice is the product.' },
+  { q: 'Why are Days 28–30 not available on Spotify?', a: 'Due to ongoing platform restrictions we are actively working to resolve, Days 28–30 are temporarily unavailable on Spotify. Both sessions are fully available on YouTube and Patreon. We will update this page as soon as they are reinstated on Spotify.' },
   { q: 'What happens after Day 30?', a: 'Your breathwork practice becomes your own. By Day 30, the guidance has faded, and you are leading yourself. The regulation skills you have built are there to support you, and you know what you need depending on your state.' },
   { q: 'Is breathwork safe for everyone?', a: 'This protocol is designed to be gentle and beginner-friendly, but breathwork is not one-size-fits-all. If you are pregnant, have a heart condition, epilepsy, severe anxiety or panic symptoms, respiratory issues, or any medical condition that could be affected by breath holds or changes in breathing, consult a qualified healthcare professional before practicing. Never practice breathwork while driving, in water, or in any situation where dizziness could put you at risk.' },
 ]
@@ -235,11 +242,10 @@ export default function BreathworkPage() {
         </div>
       </section>
 
-      {/* THREE PHASES — updated to phase-coloured cards */}
+      {/* THREE PHASES */}
       <section className="bg-obsidian py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Phase 1 — Bone */}
             <div className="border-l-4 border-l-[#F2EDE4] border border-stone/20 rounded-sm p-8 bg-obsidian/50">
               <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase mb-2">PHASE 1</p>
               <h2 className="font-bebas text-[#F2EDE4] text-4xl sm:text-5xl tracking-tight mb-2">CONTROL</h2>
@@ -248,7 +254,6 @@ export default function BreathworkPage() {
                 You learn to regulate. You build the foundation everything else stands on.
               </p>
             </div>
-            {/* Phase 2 — Clay */}
             <div className="border-l-4 border-l-[#C4622D] border border-stone/20 rounded-sm p-8 bg-obsidian/50">
               <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase mb-2">PHASE 2</p>
               <h2 className="font-bebas text-[#C4622D] text-4xl sm:text-5xl tracking-tight mb-2">CAPACITY</h2>
@@ -257,7 +262,6 @@ export default function BreathworkPage() {
                 You find out how far your range actually goes. Your body&apos;s stress signals get louder, and you stay regulated anyway.
               </p>
             </div>
-            {/* Phase 3 — Gold */}
             <div className="border-l-4 border-l-[#B89050] border border-stone/20 rounded-sm p-8 bg-obsidian/50">
               <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase mb-2">PHASE 3</p>
               <h2 className="font-bebas text-[#B89050] text-4xl sm:text-5xl tracking-tight mb-2">SELF-TRUST</h2>
@@ -296,10 +300,12 @@ export default function BreathworkPage() {
                   <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase">{pattern}</p>
                   <p className="font-space-mono text-[#9A9A92] text-xs tracking-widest uppercase">{duration}</p>
                   <div className="flex gap-2 mt-auto pt-2">
-                    <a href={spotify} target="_blank" rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors" title="Listen on Spotify">
-                      <Music size={14} className="text-clay" />
-                    </a>
+                    {spotify && (
+                      <a href={spotify} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors" title="Listen on Spotify">
+                        <Music size={14} className="text-clay" />
+                      </a>
+                    )}
                     <a href={youtube} target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center justify-center w-7 h-7 rounded hover:bg-stone/10 transition-colors" title="Watch on YouTube">
                       <svg className="w-3 h-3 text-clay" fill="currentColor" viewBox="0 0 24 24">
@@ -345,11 +351,9 @@ export default function BreathworkPage() {
         </div>
       </section>
 
-      {/* EMAIL CAPTURE */}
       <div id="email-capture">
         <EmailSubscribe />
       </div>
-
       <Footer />
     </main>
   )
