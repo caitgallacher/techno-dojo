@@ -125,7 +125,7 @@ const days = [
   { day: 29, phase: 'SELF-TRUST', pattern: 'SELF-GUIDED', duration: '9:21',
     spotify: null,
     youtube: 'https://youtu.be/TN2OhJ2U2Rw',
-    patreon: PATREON_GENERAL },
+    patreon: 'https://www.patreon.com/thetechnodojo/posts/day-29-free-30-162582443' },
   { day: 30, phase: 'SELF-TRUST', pattern: 'SELF-GUIDED', duration: '10:00',
     spotify: null,
     youtube: 'https://youtu.be/IZQODmGrlKU',
