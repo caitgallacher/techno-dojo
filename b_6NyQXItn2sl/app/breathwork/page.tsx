@@ -129,7 +129,7 @@ const days = [
   { day: 30, phase: 'SELF-TRUST', pattern: 'SELF-GUIDED', duration: '10:00',
     spotify: null,
     youtube: 'https://youtu.be/IZQODmGrlKU',
-    patreon: PATREON_GENERAL },
+    patreon: 'https://www.patreon.com/thetechnodojo/posts/day-30-self-free-162582483' },
 ]
 
 const phaseColor = {
