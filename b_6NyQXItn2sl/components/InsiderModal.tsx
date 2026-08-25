@@ -15,7 +15,7 @@ interface InsiderModalProps {
   }
 }
 
-type ModalState = 'landing' | 'checking' | 'subscribed' | 'not-subscribed' | 'subscribing' | 'subscribed-new' | 'error'
+type ModalState = 'landing' | 'entering-email' | 'checking' | 'subscribed' | 'not-subscribed' | 'subscribing' | 'subscribed-new' | 'error'
 
 export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
   const [email, setEmail] = useState('')
@@ -120,7 +120,7 @@ export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
               LISTEN FOR €5.99
             </a>
             <button
-              onClick={() => setState('not-subscribed')}
+              onClick={() => setState('entering-email')}
               className="block w-full text-center px-6 py-3 rounded bg-[#B89050] text-[#F2EDE4] font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105"
             >
               FREE FOR DOJO SUBSCRIBERS
@@ -128,8 +128,8 @@ export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
           </div>
         )}
 
-        {/* NOT-SUBSCRIBED STATE — email form */}
-        {(state === 'not-subscribed' || state === 'checking') && (
+        {/* ENTERING EMAIL STATE — form only, no result yet */}
+        {(state === 'entering-email' || state === 'checking') && (
           <div className="space-y-4">
             <p className="font-dm-sans text-obsidian text-sm leading-relaxed font-light">
               Enter your email. If you&apos;re subscribed to the Dojo, you&apos;ll get instant access.
@@ -161,6 +161,35 @@ export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
           </div>
         )}
 
+        {/* NOT SUBSCRIBED STATE — check completed, email not on list */}
+        {state === 'not-subscribed' && (
+          <div className="space-y-4">
+            <p className="font-dm-sans text-obsidian text-sm leading-relaxed font-light">
+              That email isn&apos;t on the list yet. Subscribe free to access this session and everything in the Dojo.
+            </p>
+            <button
+              onClick={handleSubscribe}
+              className="block w-full text-center px-6 py-3 rounded bg-[#B89050] text-[#F2EDE4] font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105"
+            >
+              JOIN THE DOJO FREE
+            </button>
+            <a
+              href={session.stripeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center px-6 py-3 rounded border border-obsidian/20 text-obsidian font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:border-obsidian"
+            >
+              LISTEN FOR €5.99
+            </a>
+            <button
+              onClick={() => setState('entering-email')}
+              className="font-space-mono text-obsidian/40 text-xs tracking-widest uppercase hover:text-obsidian transition-colors"
+            >
+              ← TRY A DIFFERENT EMAIL
+            </button>
+          </div>
+        )}
+
         {/* SUBSCRIBED STATE — audio player */}
         {state === 'subscribed' && (
           <div className="space-y-4">
@@ -179,45 +208,6 @@ export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
               <source src={session.audioUrl} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
-          </div>
-        )}
-
-        {/* NOT A SUBSCRIBER — offer to join */}
-        {state === 'subscribing' || state === 'subscribed-new' ? null : null}
-
-        {/* ERROR STATE */}
-        {state === 'error' && (
-          <div className="space-y-4">
-            <p className="font-dm-sans text-obsidian text-sm">{errorMessage}</p>
-            <button
-              onClick={() => setState('landing')}
-              className="font-space-mono text-obsidian/40 text-xs tracking-widest uppercase hover:text-obsidian transition-colors"
-            >
-              ← TRY AGAIN
-            </button>
-          </div>
-        )}
-
-        {/* Subscriber check returns not-subscribed — show subscribe option */}
-        {state === 'not-subscribed' && email && (
-          <div className="mt-4 pt-4 border-t border-obsidian/10 space-y-3">
-            <p className="font-dm-sans text-obsidian/60 text-xs leading-relaxed">
-              That email isn&apos;t on the list yet. Subscribe free to access this session and everything in the Dojo.
-            </p>
-            <button
-              onClick={handleSubscribe}
-              className="block w-full text-center px-6 py-3 rounded bg-[#B89050] text-[#F2EDE4] font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:scale-105"
-            >
-              JOIN THE DOJO FREE
-            </button>
-            <a
-              href={session.stripeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center px-6 py-3 rounded border border-obsidian/20 text-obsidian font-space-mono font-normal text-xs tracking-wider uppercase transition-all duration-300 hover:border-obsidian"
-            >
-              LISTEN FOR €5.99
-            </a>
           </div>
         )}
 
@@ -248,6 +238,19 @@ export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
               <source src={session.audioUrl} type="audio/mpeg" />
               Your browser does not support the audio element.
             </audio>
+          </div>
+        )}
+
+        {/* ERROR STATE */}
+        {state === 'error' && (
+          <div className="space-y-4">
+            <p className="font-dm-sans text-obsidian text-sm">{errorMessage}</p>
+            <button
+              onClick={() => setState('landing')}
+              className="font-space-mono text-obsidian/40 text-xs tracking-widest uppercase hover:text-obsidian transition-colors"
+            >
+              ← TRY AGAIN
+            </button>
           </div>
         )}
 
