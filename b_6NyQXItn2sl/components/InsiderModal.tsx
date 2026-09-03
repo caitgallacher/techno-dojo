@@ -17,6 +17,15 @@ interface InsiderModalProps {
 
 type ModalState = 'landing' | 'entering-email' | 'checking' | 'subscribed' | 'not-subscribed' | 'subscribing' | 'subscribed-new' | 'error'
 
+const trackPlay = (title: string, accessType: string) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', 'insider_session_play', {
+      session_title: title,
+      access_type: accessType,
+    })
+  }
+}
+
 export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
   const [email, setEmail] = useState('')
   const [state, setState] = useState<ModalState>('landing')
@@ -204,6 +213,7 @@ export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
               className="w-full rounded"
               style={{ accentColor: '#C4622D' }}
               preload="metadata"
+              onPlay={() => trackPlay(session.title, 'subscriber')}
             >
               <source src={session.audioUrl} type="audio/mpeg" />
               Your browser does not support the audio element.
@@ -234,6 +244,7 @@ export function InsiderModal({ isOpen, onClose, session }: InsiderModalProps) {
               className="w-full rounded"
               style={{ accentColor: '#C4622D' }}
               preload="metadata"
+              onPlay={() => trackPlay(session.title, 'new_subscriber')}
             >
               <source src={session.audioUrl} type="audio/mpeg" />
               Your browser does not support the audio element.
