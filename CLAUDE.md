@@ -68,5 +68,6 @@ Coach tag vocabulary (seeded): https://app.notion.com/p/3d23ffdf3690817aa59fcf15
 - **Seed `experiment_library` Stage 1** from the Weekly Experiments page.
 
 ## Files in this repo
-- `techno_dojo_schema.sql` — the full deployed schema (16 tables, RLS, grants, trigger, seed of founding_member_spots=100).
-- `seed_tag_vocabulary.sql` — Coach tagging vocabulary.
+- `db/techno_dojo_schema.sql` — the full deployed schema (16 tables, RLS, grants, trigger, seed of founding_member_spots=100).
+- `db/seed_tag_vocabulary.sql` — Coach tagging vocabulary.
+- `db/seed_transitions.sql` — the 20 transition moments (structured metadata; `prompt_text`/`closing_line` loaded separately).
