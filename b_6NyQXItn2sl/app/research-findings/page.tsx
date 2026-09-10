@@ -144,7 +144,7 @@ function SeamBlock({ left, right, expanded = false, showProduct = false }: {
         {expanded && !showProduct && <div className="w-px h-full bg-[#C4622D]/40" />}
       </div>
       <div className="flex-1 bg-[#1a1a18] border border-[#2a2a28] px-4 py-3 flex items-center justify-end">
-        <span className="font-space-mono text-[#9A9A92] text-xs sm:text-sm tracking-widest uppercase">{right}</span>
+        <span className="font-space-mono text-[#9A9A92] text-xs sm:text-sm tracking-widest uppercase text-right">{right}</span>
       </div>
     </div>
   )
@@ -315,7 +315,7 @@ function ResearchFeedback() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: email.trim(),
-          action: 'subscribe',
+          action: 'feedback',
           fields: {
             transition_moments: feedback,
           },
@@ -327,7 +327,7 @@ function ResearchFeedback() {
       if (data.success) {
         setSubmitted(true)
       } else {
-        setError('Something went wrong. Please try again.')
+        setError('We couldn\'t save that note. Make sure you\'re using the email you subscribe with.')
       }
     } catch {
       setError('Something went wrong. Please try again.')
@@ -395,7 +395,7 @@ function ResearchFeedback() {
           className="w-full px-4 py-3 bg-[#1a1a18] border border-[#6B6B62]/40 rounded-sm text-[#F2EDE4] placeholder-[#7D7D74] font-dm-sans text-base focus:outline-none focus:border-[#C4622D]/60"
         />
         <p className="font-dm-sans text-[#7D7D74] text-sm font-light">
-          Just so we can attach your note to your subscriber profile.
+          Use the email you subscribe with. This won&apos;t sign you up or change your subscription.
         </p>
       </div>
 
@@ -461,7 +461,17 @@ export default function ResearchFindingsPage() {
               </div>
             </div>
 
-            {/* AND YET connector */}
+            {/* AND YET connector — mobile */}
+            <div
+              className="flex lg:hidden items-center justify-center py-3 transition-all duration-500"
+              style={{ opacity: heroStage >= 3 ? 1 : 0 }}
+            >
+              <div className="text-[#C4622D] font-bebas text-2xl tracking-widest text-center leading-tight">
+                AND YET ↓
+              </div>
+            </div>
+
+            {/* AND YET connector — desktop */}
             <div className="hidden lg:flex items-center justify-center transition-all duration-500"
               style={{ opacity: heroStage >= 3 ? 1 : 0 }}>
               <div className="text-[#C4622D] font-bebas text-2xl tracking-widest text-center leading-tight">AND<br />YET →</div>
