@@ -154,15 +154,37 @@ function AnimatedSeams() {
   const reduced = useReducedMotion()
   const { ref, inView } = useInView(0.2)
   const [stage, setStage] = useState(0)
+
   useEffect(() => {
-    if (!inView || reduced) { if (reduced) setStage(3); return }
-    const t = [setTimeout(() => setStage(1), 400), setTimeout(() => setStage(2), 1200), setTimeout(() => setStage(3), 2200)]
+    if (!inView || reduced) {
+      if (reduced) setStage(2)
+      return
+    }
+
+    const t = [
+      setTimeout(() => setStage(1), 400),
+      setTimeout(() => setStage(2), 1200),
+    ]
+
     return () => t.forEach(clearTimeout)
   }, [inView, reduced])
+
   return (
     <div ref={ref} className="space-y-3">
-      {[{ left: 'MEETING', right: 'DEEP WORK' }, { left: 'WORK', right: 'HOME' }, { left: 'HARD CONVERSATION', right: 'WHAT COMES NEXT' }, { left: 'BEFORE SOMETHING IMPORTANT', right: 'ARRIVE' }]
-        .map(({ left, right }, i) => <SeamBlock key={i} left={left} right={right} expanded={stage >= 1} showProduct={stage >= 3} />)}
+      {[
+        { left: 'MEETING', right: 'DEEP WORK' },
+        { left: 'WORK', right: 'HOME' },
+        { left: 'HARD CONVERSATION', right: 'WHAT COMES NEXT' },
+        { left: 'BEFORE SOMETHING IMPORTANT', right: 'ARRIVE' },
+      ].map(({ left, right }, i) => (
+        <SeamBlock
+          key={i}
+          left={left}
+          right={right}
+          expanded={stage >= 1}
+          showProduct={false}
+        />
+      ))}
     </div>
   )
 }
@@ -248,7 +270,7 @@ const researchSources = [
   },
   {
     theme: 'CONTEXT + HABIT',
-    citation: 'Stojanovic, M. et al. (2022). The role of context stability in habit formation.',
+    citation: 'Stojanovic, M. et al. (2022). Context Stability in Habit Building Increases Automaticity and Goal Attainment.',
     note: 'Greater context stability was associated with stronger automaticity and goal attainment during intentional habit formation.',
     href: 'https://doi.org/10.3389/fpsyg.2022.883795',
   },
@@ -455,15 +477,7 @@ export default function ResearchFindingsPage() {
             </div>
           </div>
 
-          <div className="border-l-2 border-[#C4622D]/30 pl-4 mb-12 transition-all duration-700"
-            style={{ opacity: heroStage >= 3 ? 1 : 0 }}>
-            <p className="font-dm-sans text-[#7D7D74] text-base font-light leading-relaxed">
-              89% of people who strongly believed rest mattered for both performance and emotional wellbeing
-              still pushed through at least sometimes when they believed rest would help.
-            </p>
-          </div>
-
-          <div className="transition-all duration-700" style={{ opacity: heroStage >= 3 ? 1 : 0 }}>
+          <div className="mt-12 transition-all duration-700" style={{ opacity: heroStage >= 3 ? 1 : 0 }}>
             <p className="font-bebas text-[#F2EDE4] text-4xl sm:text-5xl tracking-tight">
               KNOWING ISN&apos;T THE PROBLEM.
             </p>
@@ -627,7 +641,7 @@ export default function ResearchFindingsPage() {
                   <span className="font-dm-sans text-[#9A9A92] text-sm">Reached for when stressed</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-sm border-2 border-[#B89050] bg-transparent" />
+                  <div className="w-4 h-4 rounded-sm bg-[#B89050]" />
                   <span className="font-dm-sans text-[#9A9A92] text-sm">Usually restorative</span>
                 </div>
               </div>
@@ -643,7 +657,7 @@ export default function ResearchFindingsPage() {
                     <Bar dataKey="reach" name="Reached for" fill="#C4622D" radius={[0, 2, 2, 0]}>
                       <LabelList dataKey="reach" position="right" formatter={(v: number) => `${v}%`} style={{ fill: '#C4622D', fontSize: 12, fontFamily: 'Space Mono' }} />
                     </Bar>
-                    <Bar dataKey="restore" name="Usually restorative" fill="transparent" stroke="#B89050" strokeWidth={2} radius={[0, 2, 2, 0]}>
+                    <Bar dataKey="restore" name="Usually restorative" fill="#B89050" radius={[0, 2, 2, 0]}>
                       <LabelList dataKey="restore" position="right" formatter={(v: number) => v > 0 ? `${v}%` : '0%'} style={{ fill: '#B89050', fontSize: 12, fontFamily: 'Space Mono' }} />
                     </Bar>
                   </BarChart>
