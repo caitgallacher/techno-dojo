@@ -16,18 +16,30 @@ export const handler: Handler = async (event) => {
   }
 
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method not allowed' }) }
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ error: 'Method not allowed' }),
+    }
   }
 
   try {
-    const { email, action } = JSON.parse(event.body || '{}')
+    const { email, action, fields } = JSON.parse(event.body || '{}')
 
     if (!email) {
-      return { statusCode: 400, headers, body: JSON.stringify({ error: 'Email required' }) }
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Email required' }),
+      }
     }
 
     if (!MAILERLITE_API_KEY) {
-      return { statusCode: 500, headers, body: JSON.stringify({ error: 'Server configuration error' }) }
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ error: 'Server configuration error' }),
+      }
     }
 
     // CHECK subscription status
@@ -36,18 +48,26 @@ export const handler: Handler = async (event) => {
         `https://connect.mailerlite.com/api/subscribers/${encodeURIComponent(email)}`,
         {
           headers: {
-            'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
+            Authorization: `Bearer ${MAILERLITE_API_KEY}`,
             'Content-Type': 'application/json',
           },
         }
       )
 
       if (response.status === 404) {
-        return { statusCode: 200, headers, body: JSON.stringify({ subscribed: false }) }
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({ subscribed: false }),
+        }
       }
 
       if (!response.ok) {
-        return { statusCode: 200, headers, body: JSON.stringify({ subscribed: false }) }
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({ subscribed: false }),
+        }
       }
 
       const data = await response.json()
@@ -61,27 +81,35 @@ export const handler: Handler = async (event) => {
       }
     }
 
-    // SUBSCRIBE action
+    // SUBSCRIBE / UPDATE subscriber
     if (action === 'subscribe') {
-      const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          groups: [MAILERLITE_GROUP_ID],
-          status: 'active',
-        }),
-      })
+      const response = await fetch(
+        'https://connect.mailerlite.com/api/subscribers',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${MAILERLITE_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            groups: [MAILERLITE_GROUP_ID],
+            status: 'active',
+            ...(fields && { fields }),
+          }),
+        }
+      )
 
       if (!response.ok) {
         const err = await response.json()
+
         return {
           statusCode: 200,
           headers,
-          body: JSON.stringify({ success: false, error: err?.message || 'Subscription failed' }),
+          body: JSON.stringify({
+            success: false,
+            error: err?.message || 'Subscription failed',
+          }),
         }
       }
 
@@ -92,9 +120,12 @@ export const handler: Handler = async (event) => {
       }
     }
 
-    return { statusCode: 400, headers, body: JSON.stringify({ error: 'Invalid action' }) }
-
-  } catch (err) {
+    return {
+      statusCode: 400,
+      headers,
+      body: JSON.stringify({ error: 'Invalid action' }),
+    }
+  } catch {
     return {
       statusCode: 500,
       headers,

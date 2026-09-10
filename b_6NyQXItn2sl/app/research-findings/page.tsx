@@ -258,6 +258,7 @@ const researchSources = [
 function ResearchFeedback() {
   const [selected, setSelected] = useState<string[]>([])
   const [note, setNote] = useState('')
+  const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -274,23 +275,38 @@ function ResearchFeedback() {
       return
     }
 
+    if (!email.trim()) {
+      setError('Enter your subscriber email so we can attach your note.')
+      return
+    }
+
     setSubmitting(true)
 
     try {
-      const body = new URLSearchParams({
-        'form-name': 'research-feedback',
-        transition_moments: selected.join(', '),
-        note: note.trim(),
-      }).toString()
+      const feedback = [
+        selected.length ? `Moments: ${selected.join(', ')}` : '',
+        note.trim() ? `Note: ${note.trim()}` : '',
+      ].filter(Boolean).join(' | ')
 
-      const res = await fetch('/', {
+      const res = await fetch('/.netlify/functions/subscribe-verify', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email.trim(),
+          action: 'subscribe',
+          fields: {
+            transition_moments: feedback,
+          },
+        }),
       })
 
-      if (!res.ok) throw new Error('Submission failed')
-      setSubmitted(true)
+      const data = await res.json()
+
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setError('Something went wrong. Please try again.')
+      }
     } catch {
       setError('Something went wrong. Please try again.')
     } finally {
@@ -306,16 +322,7 @@ function ResearchFeedback() {
   )
 
   return (
-    <form
-      name="research-feedback"
-      method="POST"
-      data-netlify="true"
-      onSubmit={handleSubmit}
-      className="space-y-6"
-    >
-      <input type="hidden" name="form-name" value="research-feedback" />
-      <input type="hidden" name="transition_moments" value={selected.join(', ')} />
-
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div className="flex flex-wrap gap-3">
         {chipOptions.map(chip => {
           const active = selected.includes(chip)
@@ -344,7 +351,6 @@ function ResearchFeedback() {
         </label>
         <textarea
           id="research-note"
-          name="note"
           value={note}
           onChange={e => setNote(e.target.value)}
           rows={5}
@@ -353,12 +359,30 @@ function ResearchFeedback() {
         />
       </div>
 
+      <div className="space-y-2 max-w-lg">
+        <label htmlFor="research-email" className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase">
+          SUBSCRIBER EMAIL
+        </label>
+        <input
+          id="research-email"
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder="your@email.com"
+          required
+          className="w-full px-4 py-3 bg-[#1a1a18] border border-[#6B6B62]/40 rounded-sm text-[#F2EDE4] placeholder-[#7D7D74] font-dm-sans text-base focus:outline-none focus:border-[#C4622D]/60"
+        />
+        <p className="font-dm-sans text-[#7D7D74] text-sm font-light">
+          Just so we can attach your note to your subscriber profile.
+        </p>
+      </div>
+
       <button
         type="submit"
         disabled={submitting}
         className="px-5 py-3 rounded-sm bg-[#C4622D] text-[#F2EDE4] font-space-mono text-sm tracking-widest uppercase transition-all duration-200 hover:bg-[#b35828] disabled:opacity-50"
       >
-        {submitting ? 'SENDING…' : 'LEAVE US A NOTE'}
+        {submitting ? 'SENDING...' : 'LEAVE US A NOTE'}
       </button>
 
       {error && <p className="font-dm-sans text-[#C4622D] text-sm">{error}</p>}
