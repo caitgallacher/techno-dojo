@@ -188,7 +188,7 @@ function ResearchCTA() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-
+  const [error, setError] = useState('')
   const toggle = (chip: string) => {
     setSelected(prev => prev.includes(chip) ? prev.filter(c => c !== chip) : [...prev, chip])
   }
@@ -196,14 +196,26 @@ function ResearchCTA() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
+    setError('')
     try {
-      const formData = new FormData()
-      formData.append('form-name', 'transition-points-interest')
-      formData.append('transition-moments', selected.join(', '))
-      formData.append('email', email)
-      await fetch('/', { method: 'POST', body: formData })
-      setSubmitted(true)
+      const res = await fetch('/.netlify/functions/subscribe-verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          action: 'subscribe',
+          fields: { transition_moments: selected.join(', ') },
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setError('Something went wrong. Please try again.')
+        setSubmitting(false)
+      }
     } catch {
+      setError('Something went wrong. Please try again.')
       setSubmitting(false)
     }
   }
@@ -220,16 +232,7 @@ function ResearchCTA() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      name="transition-points-interest"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      className="space-y-8"
-    >
-      <input type="hidden" name="form-name" value="transition-points-interest" />
-      <input type="hidden" name="transition-moments" value={selected.join(', ')} />
-      <p className="hidden"><input name="bot-field" /></p>
+    <form onSubmit={handleSubmit} className="space-y-8">
 
       <div className="flex flex-wrap gap-3">
         {chipOptions.map(chip => (
@@ -271,6 +274,7 @@ function ResearchCTA() {
             {submitting ? '...' : 'GET EARLY ACCESS'}
           </button>
         </div>
+                {error && <p className="font-dm-sans text-[#C4622D] text-xs">{error}</p>}
       </div>
     </form>
   )
