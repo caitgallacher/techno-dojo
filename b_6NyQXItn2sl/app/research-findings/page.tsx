@@ -31,36 +31,66 @@ function useInView(threshold = 0.2) {
   return { ref, inView }
 }
 
-// ── 10-dot percentage visual ─────────────────────────────────────────────────
-function TenDots({ pct, color = '#C4622D' }: { pct: number; color?: string }) {
+// ── coexistence percentage visual ────────────────────────────────────────────
+function CoexistDots() {
   const reduced = useReducedMotion()
   const { ref, inView } = useInView(0.2)
-  const filled = Math.floor(pct / 10)
-  const partial = (pct % 10) / 10
+
+  const bothPct = 83
+  const stressOnlyPct = 4
+  const stressTotalPct = bothPct + stressOnlyPct
 
   return (
-    <div ref={ref} className="flex gap-1.5 items-center flex-wrap" role="img" aria-label={`${pct}%`}>
-      {Array.from({ length: 10 }, (_, i) => {
-        const isFilled = i < filled
-        const isPartial = i === filled && partial > 0
-        return (
-          <div
-            key={i}
-            className="w-5 h-5 rounded-full border transition-all duration-500 flex-shrink-0"
-            style={{
-              borderColor: color,
-              background: isFilled
-                ? color
-                : isPartial
-                ? `linear-gradient(90deg, ${color} ${partial * 100}%, transparent ${partial * 100}%)`
-                : 'transparent',
-              transitionDelay: inView && !reduced ? `${i * 60}ms` : '0ms',
-              opacity: inView ? 1 : reduced ? 1 : 0,
-              transform: inView ? 'scale(1)' : reduced ? 'scale(1)' : 'scale(0.4)',
-            }}
-          />
-        )
-      })}
+    <div>
+      <div
+        ref={ref}
+        className="flex gap-1.5 items-center flex-wrap"
+        role="img"
+        aria-label="83% reported both weekly stress and weekly curiosity or excitement; 4% reported weekly stress without weekly curiosity or excitement"
+      >
+        {Array.from({ length: 10 }, (_, i) => {
+          const segmentStart = i * 10
+          const segmentEnd = segmentStart + 10
+          const bothShare = Math.max(0, Math.min(segmentEnd, bothPct) - Math.max(segmentStart, 0)) * 10
+          const stressOnlyShare = Math.max(0, Math.min(segmentEnd, stressTotalPct) - Math.max(segmentStart, bothPct)) * 10
+          const filledShare = bothShare + stressOnlyShare
+
+          let background = 'transparent'
+          if (bothShare === 100) background = '#B89050'
+          else if (stressOnlyShare === 100) background = '#C4622D'
+          else if (filledShare > 0) {
+            background = `linear-gradient(90deg, #B89050 0% ${bothShare}%, #C4622D ${bothShare}% ${filledShare}%, transparent ${filledShare}% 100%)`
+          }
+
+          return (
+            <div
+              key={i}
+              className="w-5 h-5 rounded-full border border-[#6B6B62] transition-all duration-500 flex-shrink-0"
+              style={{
+                background,
+                transitionDelay: inView && !reduced ? `${i * 60}ms` : '0ms',
+                opacity: inView ? 1 : reduced ? 1 : 0,
+                transform: inView ? 'scale(1)' : reduced ? 'scale(1)' : 'scale(0.4)',
+              }}
+            />
+          )
+        })}
+      </div>
+
+      <div className="flex flex-wrap gap-x-5 gap-y-2 mt-5">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded-full bg-[#B89050]" />
+          <span className="font-dm-sans text-[#9A9A92] text-sm">stress + excitement</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded-full bg-[#C4622D]" />
+          <span className="font-dm-sans text-[#9A9A92] text-sm">stress without excitement</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded-full border border-[#6B6B62]" />
+          <span className="font-dm-sans text-[#9A9A92] text-sm">not weekly stress</span>
+        </div>
+      </div>
     </div>
   )
 }
@@ -137,6 +167,25 @@ function AnimatedSeams() {
   )
 }
 
+function ProductTransitionCard({ label, left, right }: { label: string; left: string; right: string }) {
+  return (
+    <div className="border border-[#F2EDE4]/10 bg-[#1a2e16]/35 rounded-sm p-4 sm:p-5">
+      <p className="font-space-mono text-[#B89050] text-xs sm:text-sm tracking-widest uppercase mb-4">{label}</p>
+      <div className="grid grid-cols-[1fr_auto_1fr] gap-2 items-stretch">
+        <div className="min-w-0 bg-[#1a2e16] border border-[#F2EDE4]/10 rounded-sm px-2 sm:px-3 py-3 flex items-center justify-center text-center">
+          <span className="font-space-mono text-[#9A9A92] text-[10px] sm:text-xs tracking-widest uppercase leading-relaxed">{left}</span>
+        </div>
+        <div className="w-[92px] sm:w-[116px] border border-[#B89050]/60 bg-[#B89050]/10 rounded-sm px-2 py-2 flex items-center justify-center text-center">
+          <span className="font-space-mono text-[#B89050] text-[9px] sm:text-[10px] tracking-widest uppercase leading-tight">TRANSITION<br />POINT</span>
+        </div>
+        <div className="min-w-0 bg-[#1a2e16] border border-[#F2EDE4]/10 rounded-sm px-2 sm:px-3 py-3 flex items-center justify-center text-center">
+          <span className="font-space-mono text-[#9A9A92] text-[10px] sm:text-xs tracking-widest uppercase leading-relaxed">{right}</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── Custom tooltip ────────────────────────────────────────────────────────────
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null
@@ -170,10 +219,45 @@ const formatData = [
 
 const chipOptions = ['BETWEEN MEETINGS', 'WORK → HOME', 'BEFORE SOMETHING IMPORTANT', 'AFTER SOMETHING DIFFICULT', 'BEFORE SLEEP', 'OTHER']
 
-// ── CTA ───────────────────────────────────────────────────────────────────────
-function ResearchCTA() {
+
+const transitionUseCases = [
+  { label: 'BETWEEN MEETINGS', left: 'MEETING', right: 'NEXT MEETING' },
+  { label: 'WORK → HOME', left: 'WORK', right: 'HOME' },
+  { label: 'AFTER SOMETHING DIFFICULT', left: 'HARD CONVERSATION', right: 'WHAT COMES NEXT' },
+  { label: 'BEFORE SOMETHING IMPORTANT', left: 'BEFORE', right: 'ARRIVE' },
+]
+
+const researchSources = [
+  {
+    theme: 'ATTENTION RESIDUE',
+    citation: 'Leroy, S. (2009). Why is it so hard to do my work? The challenge of attention residue when switching between work tasks.',
+    note: 'Switching away from unfinished work can leave attention on the previous task and reduce performance on the next.',
+    href: 'https://doi.org/10.1016/j.obhdp.2009.04.002',
+  },
+  {
+    theme: 'ROLE TRANSITIONS',
+    citation: 'Ashforth, B. E., Kreiner, G. E., & Fugate, M. (2000). All in a Day’s Work: Boundaries and Micro Role Transitions.',
+    note: 'Frames shifts between work, home, and other roles as recurring psychological boundary crossings, not merely changes in schedule.',
+    href: 'https://doi.org/10.5465/amr.2000.3363315',
+  },
+  {
+    theme: 'MICRO-BREAKS',
+    citation: 'Albulescu, P. et al. (2022). Give me a break! A systematic review and meta-analysis on the efficacy of micro-breaks for increasing well-being and performance.',
+    note: 'Short breaks showed small benefits for vigor and fatigue; overall performance benefits were not statistically significant.',
+    href: 'https://doi.org/10.1371/journal.pone.0272460',
+  },
+  {
+    theme: 'CONTEXT + HABIT',
+    citation: 'Stojanovic, M. et al. (2022). The role of context stability in habit formation.',
+    note: 'Greater context stability was associated with stronger automaticity and goal attainment during intentional habit formation.',
+    href: 'https://doi.org/10.3389/fpsyg.2022.883795',
+  },
+]
+
+// ── community feedback ──────────────────────────────────────────────────────
+function ResearchFeedback() {
   const [selected, setSelected] = useState<string[]>([])
-  const [email, setEmail] = useState('')
+  const [note, setNote] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
@@ -181,49 +265,103 @@ function ResearchCTA() {
   const toggle = (chip: string) =>
     setSelected(prev => prev.includes(chip) ? prev.filter(c => c !== chip) : [...prev, chip])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); setSubmitting(true); setError('')
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setError('')
+
+    if (selected.length === 0 && !note.trim()) {
+      setError('Choose a moment or leave us a note.')
+      return
+    }
+
+    setSubmitting(true)
+
     try {
-      const res = await fetch('/.netlify/functions/subscribe-verify', {
+      const body = new URLSearchParams({
+        'form-name': 'research-feedback',
+        transition_moments: selected.join(', '),
+        note: note.trim(),
+      }).toString()
+
+      const res = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, action: 'subscribe', fields: { transition_moments: selected.join(', ') } }),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body,
       })
-      const data = await res.json()
-      if (data.success) { setSubmitted(true) } else { setError('Something went wrong. Please try again.'); setSubmitting(false) }
-    } catch { setError('Something went wrong. Please try again.'); setSubmitting(false) }
+
+      if (!res.ok) throw new Error('Submission failed')
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) return (
-    <div className="py-12 space-y-3">
-      <p className="font-bebas text-[#B89050] text-5xl tracking-tight">YOU&apos;RE ON THE LIST.</p>
-      <p className="font-dm-sans text-[#9A9A92] text-lg font-light">We&apos;ll reach out when Transition Points is ready for early access.</p>
+    <div className="py-8 space-y-3">
+      <p className="font-bebas text-[#B89050] text-5xl tracking-tight">GOT IT.</p>
+      <p className="font-dm-sans text-[#9A9A92] text-lg font-light">Thank you for building this with us.</p>
     </div>
   )
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form
+      name="research-feedback"
+      method="POST"
+      data-netlify="true"
+      onSubmit={handleSubmit}
+      className="space-y-6"
+    >
+      <input type="hidden" name="form-name" value="research-feedback" />
+      <input type="hidden" name="transition_moments" value={selected.join(', ')} />
+
       <div className="flex flex-wrap gap-3">
-        {chipOptions.map(chip => (
-          <button key={chip} type="button" onClick={() => toggle(chip)}
-            className="px-4 py-2.5 rounded-sm font-space-mono text-sm tracking-wider uppercase transition-all duration-200"
-            style={{ background: selected.includes(chip) ? '#C4622D' : 'transparent', color: selected.includes(chip) ? '#F2EDE4' : '#9A9A92', border: `1px solid ${selected.includes(chip) ? '#C4622D' : '#6B6B62'}` }}>
-            {chip}
-          </button>
-        ))}
+        {chipOptions.map(chip => {
+          const active = selected.includes(chip)
+          return (
+            <button
+              key={chip}
+              type="button"
+              aria-pressed={active}
+              onClick={() => toggle(chip)}
+              className="px-4 py-2.5 rounded-sm font-space-mono text-sm tracking-wider uppercase transition-all duration-200"
+              style={{
+                background: active ? '#C4622D' : 'transparent',
+                color: active ? '#F2EDE4' : '#9A9A92',
+                border: `1px solid ${active ? '#C4622D' : '#6B6B62'}`,
+              }}
+            >
+              {chip}
+            </button>
+          )
+        })}
       </div>
-      <div className="space-y-3 max-w-lg">
-        <p className="font-bebas text-[#F2EDE4] text-3xl tracking-tight">WANT TO BE ONE OF THE FIRST TO TRY IT?</p>
-        <div className="flex flex-col sm:flex-row gap-2">
-          <input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required
-            className="min-w-0 flex-1 px-4 py-3 bg-[#1a1a18] border border-[#6B6B62]/40 rounded-sm text-[#F2EDE4] placeholder-[#7D7D74] font-dm-sans text-base focus:outline-none focus:border-[#C4622D]/60" />
-          <button type="submit" disabled={submitting}
-            className="w-full sm:w-auto px-5 py-3 rounded-sm bg-[#C4622D] text-[#F2EDE4] font-space-mono text-sm tracking-widest uppercase transition-all duration-200 hover:bg-[#b35828] disabled:opacity-50">
-            {submitting ? '...' : 'GET EARLY ACCESS'}
-          </button>
-        </div>
-        {error && <p className="font-dm-sans text-[#C4622D] text-sm">{error}</p>}
+
+      <div className="space-y-2">
+        <label htmlFor="research-note" className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase">
+          TELL US ABOUT THAT MOMENT
+        </label>
+        <textarea
+          id="research-note"
+          name="note"
+          value={note}
+          onChange={e => setNote(e.target.value)}
+          rows={5}
+          placeholder="What happens there? What would help you arrive differently?"
+          className="w-full resize-y px-4 py-3 bg-[#1a1a18] border border-[#6B6B62]/40 rounded-sm text-[#F2EDE4] placeholder-[#7D7D74] font-dm-sans text-base leading-relaxed focus:outline-none focus:border-[#C4622D]/60"
+        />
       </div>
+
+      <button
+        type="submit"
+        disabled={submitting}
+        className="px-5 py-3 rounded-sm bg-[#C4622D] text-[#F2EDE4] font-space-mono text-sm tracking-widest uppercase transition-all duration-200 hover:bg-[#b35828] disabled:opacity-50"
+      >
+        {submitting ? 'SENDING…' : 'LEAVE US A NOTE'}
+      </button>
+
+      {error && <p className="font-dm-sans text-[#C4622D] text-sm">{error}</p>}
     </form>
   )
 }
@@ -238,20 +376,6 @@ export default function ResearchFindingsPage() {
     const t = [setTimeout(() => setHeroStage(1), 300), setTimeout(() => setHeroStage(2), 900), setTimeout(() => setHeroStage(3), 1600)]
     return () => t.forEach(clearTimeout)
   }, [reduced])
-
-  const [dotStage, setDotStage] = useState<'stress' | 'coexist'>('stress')
-  const dotRef = useRef<HTMLDivElement>(null)
-  const [dotInView, setDotInView] = useState(false)
-  useEffect(() => {
-    const el = dotRef.current; if (!el) return
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setDotInView(true) }, { threshold: 0.3 })
-    obs.observe(el); return () => obs.disconnect()
-  }, [])
-  useEffect(() => {
-    if (!dotInView || reduced) { if (reduced) setDotStage('coexist'); return }
-    const t = setTimeout(() => setDotStage('coexist'), 1200)
-    return () => clearTimeout(t)
-  }, [dotInView, reduced])
 
   return (
     <main className="min-h-screen bg-[#0C0C0A]">
@@ -351,31 +475,21 @@ export default function ResearchFindingsPage() {
               </div>
             </div>
 
-            {/* 10-dot coexistence visual */}
-            <div ref={dotRef}>
+            {/* Coexistence visual: same population, three states */}
+            <div>
               <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-3">
-                {dotStage === 'stress' ? 'WEEKLY STRESS' : 'STRESS AND CURIOSITY / EXCITEMENT · BOTH WEEKLY'}
+                STRESS + CURIOSITY / EXCITEMENT · BOTH WEEKLY
               </p>
-              <div className="mb-6">
-                <div className="font-bebas text-[#C4622D] text-6xl sm:text-7xl leading-none mb-3">
-                  {dotStage === 'stress' ? '87%' : '83%'}
-                </div>
-                {dotStage === 'stress'
-                  ? <TenDots pct={87} color="#C4622D" />
-                  : <TenDots pct={83} color="#B89050" />}
-              </div>
-              <div className="flex gap-5 mt-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-[#C4622D]" />
-                  <span className="font-dm-sans text-[#7D7D74] text-sm">stress</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-[#B89050]" />
-                  <span className="font-dm-sans text-[#7D7D74] text-sm">stress + excitement coexisting</span>
-                </div>
-              </div>
-              <p className="font-dm-sans text-[#7D7D74] text-sm font-light mt-4 italic">
-                Each circle represents approximately 10% of respondents. Percentage label is authoritative.
+              <div className="font-bebas text-[#B89050] text-7xl sm:text-8xl leading-none mb-2">83%</div>
+              <p className="font-dm-sans text-[#F2EDE4] text-lg font-light leading-relaxed mb-6 max-w-md">
+                experienced both weekly stress and weekly curiosity or excitement.
+              </p>
+              <CoexistDots />
+              <p className="font-dm-sans text-[#7D7D74] text-sm font-light mt-5">
+                Only <span className="text-[#C4622D]">4%</span> reported weekly stress without weekly curiosity or excitement.
+              </p>
+              <p className="font-dm-sans text-[#7D7D74] text-sm font-light mt-2 italic">
+                Each circle represents 10 percentage points; the split circle preserves the underlying percentages.
               </p>
             </div>
           </div>
@@ -461,7 +575,7 @@ export default function ResearchFindingsPage() {
                 A BREAK ISN&apos;T ALWAYS RECOVERY.
               </h2>
               <p className="font-dm-sans text-[#9A9A92] text-lg font-light leading-relaxed mb-8">
-                What people reached for when stressed and what respondents said usually left them restored were not always the same.
+                What people reached for when stressed wasn&apos;t always what they said left them restored.
               </p>
 
               {/* Phone hero callout */}
@@ -570,7 +684,7 @@ export default function ResearchFindingsPage() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
-              { word: 'SHORT.', sub: 'Under 90 seconds.' },
+              { word: 'SHORT.', sub: 'Fits between contexts.' },
               { word: 'CONTEXTUAL.', sub: 'Tied to a specific moment.' },
               { word: 'CREDIBLE.', sub: 'Backed by real science.' },
               { word: 'NO NEW\nCALENDAR BLOCK.', sub: 'Attaches to what already happens.' },
@@ -605,6 +719,30 @@ export default function ResearchFindingsPage() {
                   <span className="text-[#F2EDE4]">The literature gave us a place to look.</span> Not a finished answer.
                 </p>
               </div>
+
+              <details className="group mt-5 border-t border-[#2a2a28] pt-5">
+                <summary className="list-none cursor-pointer flex items-center justify-between gap-4 font-space-mono text-[#B89050] text-sm tracking-widest uppercase select-none">
+                  <span>VIEW THE RESEARCH</span>
+                  <span className="text-xl leading-none transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <div className="space-y-5 pt-6">
+                  {researchSources.map(source => (
+                    <div key={source.theme} className="border-l border-[#B89050]/30 pl-4">
+                      <p className="font-space-mono text-[#B89050] text-xs tracking-widest uppercase mb-1">{source.theme}</p>
+                      <p className="font-dm-sans text-[#9A9A92] text-sm leading-relaxed mb-1">{source.note}</p>
+                      <p className="font-dm-sans text-[#7D7D74] text-xs leading-relaxed">{source.citation}</p>
+                      <a
+                        href={source.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-block mt-2 font-space-mono text-[#F2EDE4] text-xs tracking-wider uppercase hover:text-[#B89050] transition-colors"
+                      >
+                        READ PAPER ↗
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </details>
             </div>
             <div>
               <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-6">THE TRANSITION IS ALREADY THERE</p>
@@ -624,47 +762,38 @@ export default function ResearchFindingsPage() {
           <p className="font-space-mono text-[#B89050] text-sm tracking-widest uppercase mb-12">
             60–90 SECONDS TO ARRIVE IN WHAT COMES NEXT.
           </p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="font-dm-sans text-[#F2EDE4] text-xl font-light leading-relaxed mb-4">
-                Short guided audio practices built for the threshold moments already inside a demanding day.
-              </p>
-              <p className="font-dm-sans text-[#9A9A92] text-lg font-light leading-relaxed mb-8">
-                Instead of asking you to schedule another routine, each practice attaches to a context shift that already happens. Between two meetings. Before you walk through the door at home. After a hard conversation. At the start of something important.
-              </p>
-              <div className="space-y-3 border-t border-[#F2EDE4]/10 pt-8">
-                <p className="font-bebas text-[#F2EDE4] text-3xl sm:text-4xl leading-tight tracking-tight">THEY DON&apos;T ASK YOU TO STOP.</p>
-                <p className="font-bebas text-[#B89050] text-3xl sm:text-4xl leading-tight tracking-tight">THEY TRAIN YOU TO ARRIVE.</p>
-              </div>
+          <div className="max-w-2xl">
+            <p className="font-dm-sans text-[#F2EDE4] text-xl font-light leading-relaxed mb-4">
+              Short guided audio practices built for the threshold moments already inside a demanding day.
+            </p>
+            <p className="font-dm-sans text-[#9A9A92] text-lg font-light leading-relaxed mb-8">
+              Instead of asking you to schedule another routine, each practice attaches to a context shift that already happens.
+            </p>
+            <div className="space-y-3 border-t border-[#F2EDE4]/10 pt-8">
+              <p className="font-bebas text-[#F2EDE4] text-3xl sm:text-4xl leading-tight tracking-tight">THEY DON&apos;T ASK YOU TO STOP.</p>
+              <p className="font-bebas text-[#B89050] text-3xl sm:text-4xl leading-tight tracking-tight">THEY TRAIN YOU TO ARRIVE.</p>
             </div>
-            <div className="space-y-4">
-              {[{ top: 'MEETING', bottom: 'DEEP WORK' }, { top: 'WORK', bottom: 'HOME' }, { top: 'HARD CONVERSATION', bottom: 'WHAT COMES NEXT' }, { top: 'BEFORE SOMETHING IMPORTANT', bottom: 'ARRIVE' }]
-                .map(({ top, bottom }) => (
-                  <div key={top} className="flex flex-col items-center gap-1">
-                    <div className="w-full bg-[#1a2e16] border border-[#F2EDE4]/10 rounded-sm px-4 py-2.5 text-center">
-                      <span className="font-space-mono text-[#9A9A92] text-sm tracking-widest uppercase">{top}</span>
-                    </div>
-                    <div className="border border-[#B89050]/60 bg-[#B89050]/10 rounded-sm px-6 py-2 text-center w-48">
-                      <span className="font-space-mono text-[#B89050] text-xs tracking-widest uppercase">TRANSITION POINT</span>
-                    </div>
-                    <div className="w-full bg-[#1a2e16] border border-[#F2EDE4]/10 rounded-sm px-4 py-2.5 text-center">
-                      <span className="font-space-mono text-[#9A9A92] text-sm tracking-widest uppercase">{bottom}</span>
-                    </div>
-                  </div>
-                ))}
-            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-14">
+            {transitionUseCases.map(useCase => (
+              <ProductTransitionCard key={useCase.label} {...useCase} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── S9 · CTA ──────────────────────────────────────────────────────── */}
+      {/* ── S9 · COMMUNITY NOTE ─────────────────────────────────────────────── */}
       <section className="py-24 px-4 md:px-8">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-bebas text-[#F2EDE4] text-4xl sm:text-5xl leading-none tracking-tight mb-4">
-            WHERE IN YOUR DAY DO YOU MOST NEED A MOMENT TO ARRIVE?
+          <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-5">LEAVE US A NOTE</p>
+          <h2 className="font-bebas text-[#F2EDE4] text-4xl sm:text-5xl leading-none tracking-tight mb-5">
+            YOU HELPED BUILD THIS. TELL US WHAT YOU&apos;RE THINKING.
           </h2>
-          <p className="font-dm-sans text-[#9A9A92] text-lg font-light leading-relaxed mb-10">Select everything that applies.</p>
-          <ResearchCTA />
+          <p className="font-dm-sans text-[#9A9A92] text-lg font-light leading-relaxed mb-8">
+            Where in your day do you most need a moment to arrive? Select what applies, or tell us in your own words.
+          </p>
+          <ResearchFeedback />
         </div>
       </section>
 
