@@ -11,7 +11,9 @@ function useReducedMotion() {
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
     setReduced(mq.matches)
-    mq.addEventListener('change', () => setReduced(mq.matches))
+    const handleChange = () => setReduced(mq.matches)
+    mq.addEventListener('change', handleChange)
+    return () => mq.removeEventListener('change', handleChange)
   }, [])
   return reduced
 }
@@ -37,7 +39,7 @@ function TenDots({ pct, color = '#C4622D' }: { pct: number; color?: string }) {
   const partial = (pct % 10) / 10
 
   return (
-    <div ref={ref} className="flex gap-1.5 items-center flex-wrap">
+    <div ref={ref} className="flex gap-1.5 items-center flex-wrap" role="img" aria-label={`${pct}%`}>
       {Array.from({ length: 10 }, (_, i) => {
         const isFilled = i < filled
         const isPartial = i === filled && partial > 0
@@ -55,6 +57,34 @@ function TenDots({ pct, color = '#C4622D' }: { pct: number; color?: string }) {
               transitionDelay: inView && !reduced ? `${i * 60}ms` : '0ms',
               opacity: inView ? 1 : reduced ? 1 : 0,
               transform: inView ? 'scale(1)' : reduced ? 'scale(1)' : 'scale(0.4)',
+            }}
+          />
+        )
+      })}
+    </div>
+  )
+}
+
+// ── 10-segment percentage visual ─────────────────────────────────────────────
+function TenSegments({ pct, color = '#9A9A92' }: { pct: number; color?: string }) {
+  const filled = Math.floor(pct / 10)
+  const partial = (pct % 10) / 10
+
+  return (
+    <div className="flex gap-1 mb-1.5" role="img" aria-label={`${pct}%`}>
+      {Array.from({ length: 10 }, (_, i) => {
+        const isFilled = i < filled
+        const isPartial = i === filled && partial > 0
+        return (
+          <div
+            key={i}
+            className="h-3 flex-1 rounded-sm overflow-hidden"
+            style={{
+              background: isFilled
+                ? color
+                : isPartial
+                ? `linear-gradient(90deg, ${color} ${partial * 100}%, #1a1a18 ${partial * 100}%)`
+                : '#1a1a18',
             }}
           />
         )
@@ -113,9 +143,10 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return (
     <div className="bg-[#0C0C0A] border border-[#6B6B62]/30 rounded-sm px-3 py-2">
       <p className="font-space-mono text-[#9A9A92] text-xs mb-1">{label}</p>
-      {payload.map((e: any, i: number) => (
-        <p key={i} className="font-dm-sans text-sm" style={{ color: e.color }}>{e.name}: {e.value}%</p>
-      ))}
+      {payload.map((e: any, i: number) => {
+        const color = e.dataKey === 'restore' ? '#B89050' : e.dataKey === 'reach' ? '#C4622D' : '#F2EDE4'
+        return <p key={i} className="font-dm-sans text-sm" style={{ color }}>{e.name}: {e.value}%</p>
+      })}
     </div>
   )
 }
@@ -183,11 +214,11 @@ function ResearchCTA() {
       </div>
       <div className="space-y-3 max-w-lg">
         <p className="font-bebas text-[#F2EDE4] text-3xl tracking-tight">WANT TO BE ONE OF THE FIRST TO TRY IT?</p>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required
-            className="flex-1 px-4 py-3 bg-[#1a1a18] border border-[#6B6B62]/40 rounded-sm text-[#F2EDE4] placeholder-[#6B6B62] font-dm-sans text-base focus:outline-none focus:border-[#C4622D]/60" />
+            className="min-w-0 flex-1 px-4 py-3 bg-[#1a1a18] border border-[#6B6B62]/40 rounded-sm text-[#F2EDE4] placeholder-[#7D7D74] font-dm-sans text-base focus:outline-none focus:border-[#C4622D]/60" />
           <button type="submit" disabled={submitting}
-            className="px-5 py-3 rounded-sm bg-[#C4622D] text-[#F2EDE4] font-space-mono text-sm tracking-widest uppercase transition-all duration-200 hover:bg-[#b35828] disabled:opacity-50">
+            className="w-full sm:w-auto px-5 py-3 rounded-sm bg-[#C4622D] text-[#F2EDE4] font-space-mono text-sm tracking-widest uppercase transition-all duration-200 hover:bg-[#b35828] disabled:opacity-50">
             {submitting ? '...' : 'GET EARLY ACCESS'}
           </button>
         </div>
@@ -229,7 +260,7 @@ export default function ResearchFindingsPage() {
       {/* ── S1 · HERO ────────────────────────────────────────────────────── */}
       <section className="pt-40 pb-24 px-4 md:px-8" ref={heroRef}>
         <div className="max-w-6xl mx-auto">
-          <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase mb-10 transition-all duration-500"
+          <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-10 transition-all duration-500"
             style={{ opacity: heroStage >= 1 ? 1 : 0, transform: heroStage >= 1 ? 'none' : 'translateY(8px)' }}>
             RESEARCH FINDINGS · 2026
           </p>
@@ -242,7 +273,7 @@ export default function ResearchFindingsPage() {
             {/* BELIEF — two smaller stats grouped */}
             <div className="lg:col-span-2 border border-[#2a2a28] rounded-sm p-6 space-y-6 transition-all duration-700"
               style={{ opacity: heroStage >= 2 ? 1 : 0, transform: heroStage >= 2 ? 'none' : 'translateY(12px)' }}>
-              <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase">WHAT WE BELIEVE</p>
+              <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase">WHAT WE BELIEVE</p>
               <div className="space-y-5">
                 <div>
                   <div className="font-bebas text-[#F2EDE4] text-5xl leading-none">83%</div>
@@ -271,15 +302,15 @@ export default function ResearchFindingsPage() {
               style={{ opacity: heroStage >= 3 ? 1 : 0, transform: heroStage >= 3 ? 'none' : 'translateY(12px)' }}>
               <div className="font-bebas text-[#C4622D] text-8xl sm:text-9xl leading-none mb-3">91%</div>
               <p className="font-dm-sans text-[#F2EDE4] text-lg font-light leading-relaxed">
-                keep pushing at least sometimes — even when they believe rest would help
+                keep pushing at least sometimes, even when they believe rest would help
               </p>
             </div>
           </div>
 
           <div className="border-l-2 border-[#C4622D]/30 pl-4 mb-12 transition-all duration-700"
             style={{ opacity: heroStage >= 3 ? 1 : 0 }}>
-            <p className="font-dm-sans text-[#6B6B62] text-base font-light leading-relaxed">
-              78% of those who rated rest as highly important for both performance and emotional wellbeing
+            <p className="font-dm-sans text-[#7D7D74] text-base font-light leading-relaxed">
+              89% of people who strongly believed rest mattered for both performance and emotional wellbeing
               still pushed through at least sometimes when they believed rest would help.
             </p>
           </div>
@@ -307,14 +338,14 @@ export default function ResearchFindingsPage() {
                 INTENSITY AND POSITIVE EMOTION CAN COEXIST.
               </p>
               <p className="font-dm-sans text-[#9A9A92] text-base font-light mt-2">
-                The goal isn&apos;t necessarily less intensity.
+                Less intensity wasn&apos;t the obvious answer.
               </p>
               <div className="grid grid-cols-2 gap-2 mt-8">
                 {[{ n: '91%', label: 'curiosity or excitement weekly' }, { n: '83%', label: 'joy or lightheartedness weekly' }, { n: '83%', label: 'connection to others weekly' }, { n: '65%', label: 'accomplishment or pride weekly' }]
                   .map(({ n, label }) => (
                     <div key={label} className="border border-[#2a2a28] rounded-sm p-3">
                       <div className="font-bebas text-[#B89050] text-2xl leading-none">{n}</div>
-                      <p className="font-dm-sans text-[#6B6B62] text-sm font-light mt-1">{label}</p>
+                      <p className="font-dm-sans text-[#7D7D74] text-sm font-light mt-1">{label}</p>
                     </div>
                   ))}
               </div>
@@ -322,8 +353,8 @@ export default function ResearchFindingsPage() {
 
             {/* 10-dot coexistence visual */}
             <div ref={dotRef}>
-              <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase mb-3">
-                {dotStage === 'stress' ? 'WEEKLY STRESS' : 'STRESS AND CURIOSITY / EXCITEMENT — BOTH WEEKLY'}
+              <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-3">
+                {dotStage === 'stress' ? 'WEEKLY STRESS' : 'STRESS AND CURIOSITY / EXCITEMENT · BOTH WEEKLY'}
               </p>
               <div className="mb-6">
                 <div className="font-bebas text-[#C4622D] text-6xl sm:text-7xl leading-none mb-3">
@@ -336,14 +367,14 @@ export default function ResearchFindingsPage() {
               <div className="flex gap-5 mt-4">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-[#C4622D]" />
-                  <span className="font-dm-sans text-[#6B6B62] text-sm">stress</span>
+                  <span className="font-dm-sans text-[#7D7D74] text-sm">stress</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-[#B89050]" />
-                  <span className="font-dm-sans text-[#6B6B62] text-sm">stress + excitement coexisting</span>
+                  <span className="font-dm-sans text-[#7D7D74] text-sm">stress + excitement coexisting</span>
                 </div>
               </div>
-              <p className="font-dm-sans text-[#6B6B62] text-sm font-light mt-4 italic">
+              <p className="font-dm-sans text-[#7D7D74] text-sm font-light mt-4 italic">
                 Each circle represents approximately 10% of respondents. Percentage label is authoritative.
               </p>
             </div>
@@ -361,7 +392,7 @@ export default function ResearchFindingsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Segmented strip — percentages */}
             <div>
-              <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase mb-6">
+              <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-6">
                 HOW PUSHING AND RECOVERING FIT TOGETHER
               </p>
               {[
@@ -372,12 +403,7 @@ export default function ResearchFindingsPage() {
                 { label: "Hadn't thought about it this way", pct: 13, color: '#6B6B62' },
               ].map(({ label, pct, color }) => (
                 <div key={label} className="mb-4">
-                  <div className="flex gap-1 mb-1.5">
-                    {Array.from({ length: 10 }, (_, i) => (
-                      <div key={i} className="h-3 flex-1 rounded-sm"
-                        style={{ backgroundColor: i < Math.round(pct / 10) ? color : '#1a1a18' }} />
-                    ))}
-                  </div>
+                  <TenSegments pct={pct} color={color} />
                   <div className="flex items-center gap-3">
                     <span className="font-bebas text-[#F2EDE4] text-xl leading-none w-10">{pct}%</span>
                     <span className="font-dm-sans text-[#9A9A92] text-base font-light">{label}</span>
@@ -395,7 +421,7 @@ export default function ResearchFindingsPage() {
               <h3 className="font-bebas text-[#F2EDE4] text-3xl sm:text-4xl leading-tight tracking-tight mb-8">
                 WE&apos;RE BETTER AT DEALING WITH STRESS THAN PREVENTING IT.
               </h3>
-              <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase mb-6">
+              <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-6">
                 RATED THEMSELVES INEFFECTIVE AT:
               </p>
               <div className="space-y-6">
@@ -449,7 +475,7 @@ export default function ResearchFindingsPage() {
                   <p className="font-dm-sans text-[#9A9A92] text-base font-light leading-relaxed">selected it as something that usually left them restored</p>
                 </div>
               </div>
-              <p className="font-dm-sans text-[#6B6B62] text-sm font-light italic">
+              <p className="font-dm-sans text-[#7D7D74] text-sm font-light italic">
                 Based on respondents&apos; reported experience; this does not establish objective effectiveness.
               </p>
             </div>
@@ -467,13 +493,13 @@ export default function ResearchFindingsPage() {
                   <span className="font-dm-sans text-[#9A9A92] text-sm">Usually restorative</span>
                 </div>
               </div>
-              <p className="font-space-mono text-[#6B6B62] text-xs tracking-widest uppercase mb-4">
-                % OF RESPONDENTS — EXPLORATORY SURVEY
+              <p className="font-space-mono text-[#7D7D74] text-xs tracking-widest uppercase mb-4">
+                % OF RESPONDENTS · EXPLORATORY SURVEY
               </p>
               <div className="h-72">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={reachRestoreData} layout="vertical" barGap={3} margin={{ left: 0, right: 40, top: 0, bottom: 0 }}>
-                    <XAxis type="number" domain={[0, 100]} tick={{ fill: '#6B6B62', fontSize: 12, fontFamily: 'Space Mono' }} tickFormatter={v => `${v}%`} />
+                    <XAxis type="number" domain={[0, 100]} tick={{ fill: '#7D7D74', fontSize: 12, fontFamily: 'Space Mono' }} tickFormatter={v => `${v}%`} />
                     <YAxis type="category" dataKey="activity" tick={{ fill: '#9A9A92', fontSize: 13, fontFamily: 'DM Sans', width: 140 }} width={150} />
                     <Tooltip content={<CustomTooltip />} />
                     <Bar dataKey="reach" name="Reached for" fill="#C4622D" radius={[0, 2, 2, 0]}>
@@ -511,18 +537,18 @@ export default function ResearchFindingsPage() {
               <p className="font-bebas text-[#F2EDE4] text-2xl leading-tight tracking-tight">TOO SLOW OR PASSIVE FOR HOW I LIVE</p>
             </div>
           </div>
-          <p className="font-dm-sans text-[#6B6B62] text-sm font-light italic mb-12">
+          <p className="font-dm-sans text-[#7D7D74] text-sm font-light italic mb-12">
             Among respondents who answered this follow-up question.
           </p>
 
           {/* Product requirements */}
-          <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase mb-4">
+          <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-4">
             WHAT WOULD MAKE A PRACTICE MORE APPEALING
           </p>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={formatData} layout="vertical" margin={{ left: 0, right: 50, top: 0, bottom: 0 }}>
-                <XAxis type="number" domain={[0, 100]} tick={{ fill: '#6B6B62', fontSize: 12, fontFamily: 'Space Mono' }} tickFormatter={v => `${v}%`} />
+                <XAxis type="number" domain={[0, 100]} tick={{ fill: '#7D7D74', fontSize: 12, fontFamily: 'Space Mono' }} tickFormatter={v => `${v}%`} />
                 <YAxis type="category" dataKey="label" tick={{ fill: '#9A9A92', fontSize: 13, fontFamily: 'DM Sans', width: 155 }} width={165} />
                 <Tooltip content={<CustomTooltip />} />
                 <Bar dataKey="pct" name="Selected" radius={[0, 2, 2, 0]}>
@@ -538,7 +564,7 @@ export default function ResearchFindingsPage() {
       {/* ── S6 · DESIGN REQUIREMENTS BRIDGE ──────────────────────────────── */}
       <section className="py-24 px-4 md:px-8 bg-[#111110]">
         <div className="max-w-6xl mx-auto">
-          <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase mb-6">WHAT THAT GAVE US</p>
+          <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-6">WHAT THAT GAVE US</p>
           <h2 className="font-bebas text-[#F2EDE4] text-5xl sm:text-6xl leading-none tracking-tight mb-12">
             THE PRACTICE HAS TO FIT THE LIFE.
           </h2>
@@ -551,7 +577,7 @@ export default function ResearchFindingsPage() {
             ].map(({ word, sub }) => (
               <div key={word} className="border border-[#2a2a28] rounded-sm p-5 space-y-3">
                 <p className="font-bebas text-[#F2EDE4] text-2xl leading-tight whitespace-pre-line">{word}</p>
-                <p className="font-dm-sans text-[#6B6B62] text-base font-light leading-relaxed">{sub}</p>
+                <p className="font-dm-sans text-[#7D7D74] text-base font-light leading-relaxed">{sub}</p>
               </div>
             ))}
           </div>
@@ -571,7 +597,7 @@ export default function ResearchFindingsPage() {
               </p>
               <div className="border-l-2 border-[#B89050]/40 pl-4 space-y-2 mb-8">
                 {['Attention residue when switching tasks', 'Role and boundary transitions', 'Stable context cues and habit formation', 'Micro-break research'].map(s => (
-                  <p key={s} className="font-dm-sans text-[#6B6B62] text-base font-light">{s}</p>
+                  <p key={s} className="font-dm-sans text-[#7D7D74] text-base font-light">{s}</p>
                 ))}
               </div>
               <div className="border border-[#B89050]/30 rounded-sm p-5 bg-[#B89050]/5">
@@ -581,7 +607,7 @@ export default function ResearchFindingsPage() {
               </div>
             </div>
             <div>
-              <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase mb-6">THE TRANSITION IS ALREADY THERE</p>
+              <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-6">THE TRANSITION IS ALREADY THERE</p>
               <AnimatedSeams />
             </div>
           </div>
@@ -645,7 +671,7 @@ export default function ResearchFindingsPage() {
       {/* ── METHODOLOGY ───────────────────────────────────────────────────── */}
       <section className="py-12 px-4 md:px-8 border-t border-[#2a2a28]">
         <div className="max-w-6xl mx-auto">
-          <p className="font-space-mono text-[#6B6B62] text-sm tracking-widest uppercase mb-4">EXPLORATORY RESEARCH</p>
+          <p className="font-space-mono text-[#7D7D74] text-sm tracking-widest uppercase mb-4">EXPLORATORY RESEARCH</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
               { title: 'SURVEY', body: 'Exploratory survey of people living demanding lives. Survey findings are directional. Percentages refer to our survey unless otherwise stated.' },
@@ -654,7 +680,7 @@ export default function ResearchFindingsPage() {
             ].map(({ title, body }) => (
               <div key={title}>
                 <p className="font-bebas text-[#9A9A92] text-lg mb-2">{title}</p>
-                <p className="font-dm-sans text-[#6B6B62] text-sm font-light leading-relaxed">{body}</p>
+                <p className="font-dm-sans text-[#7D7D74] text-sm font-light leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
